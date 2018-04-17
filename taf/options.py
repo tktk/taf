@@ -24,8 +24,7 @@ def _addModuleOptions(
 
 def _getModuleNames(
 ):
-    TSCRIPTS_PATH = taf.TSCRIPTS_DIR + '.'
-    TSCRIPTS_PREFIX = TSCRIPTS_PATH + taf.PACKAGE_NAME
+    TSCRIPTS_PREFIX = taf.TSCRIPTS_DIR + '.'
 
     modules = []
     ModuleScanner().run(
@@ -33,7 +32,7 @@ def _getModuleNames(
         key = TSCRIPTS_PREFIX,
     )
 
-    LENGTH = len( TSCRIPTS_PATH )
+    LENGTH = len( TSCRIPTS_PREFIX )
 
     return [ module[ LENGTH: ] for module in modules ]
 
