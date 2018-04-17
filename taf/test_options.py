@@ -5,11 +5,11 @@ from . import taf
 
 import unittest
 
-class OptionsTest( unittest.TestCase ):
-    def testLoadTools(
+class TestOptions( unittest.TestCase ):
+    def test_loadTools(
         _self,
     ):
-        context = OptionsTestContext()
+        context = _DummyContext()
 
         taf.LOAD_TOOLS = [
             'testtools',
@@ -22,10 +22,10 @@ class OptionsTest( unittest.TestCase ):
             context.tools,
         )
 
-    def testModuleOptions(
+    def test_moduleOptions(
         _self,
     ):
-        context = OptionsTestContext()
+        context = _DummyContext()
 
         taf.TSCRIPTS_DIR = 'test.tscripts'
 
@@ -33,7 +33,7 @@ class OptionsTest( unittest.TestCase ):
 
         _self.assertEqual(
             [
-                Option(
+                _DummyOption(
                     '--enable.test',
                     'store_true',
                     False,
@@ -42,7 +42,7 @@ class OptionsTest( unittest.TestCase ):
             context.options,
         )
 
-class OptionsTestContext:
+class _DummyContext:
     def __init__(
         _self,
     ):
@@ -62,14 +62,14 @@ class OptionsTestContext:
         default,
     ):
         _self.options.append(
-            Option(
+            _DummyOption(
                 _key,
                 action,
                 default,
             )
         )
 
-class Option:
+class _DummyOption:
     def __init__(
         _self,
         _key,
