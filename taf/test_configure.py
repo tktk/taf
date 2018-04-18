@@ -22,12 +22,39 @@ class TestConfigure( unittest.TestCase ):
             context.tools,
         )
 
+    def test_buildModules(
+        _self,
+    ):
+        context = _DummyContext()
+
+        context.options = {
+            'enable.testmodule' : True,
+            'enable.testmodule_disable' : False,
+            'otheroption1' : True,
+            'otheroption2' : False,
+        }
+
+        taf.TSCRIPTS_DIR = 'test.tscripts'
+
+        configure( context )
+
+        _self.assertEqual(
+            [ 'testmodule' ],
+            context.env.taf[ 'BUILD_MODULES' ],
+        )
+
+    #TODO test_buildModules_dependModules
+
+class _DummyEnv:
+    pass
+
 class _DummyContext:
     def __init__(
         _self,
     ):
         _self.tools = []
-        _self.options = []
+        _self.options = {}
+        _self.env = _DummyEnv()
 
     def load(
         _self,

@@ -34,7 +34,7 @@ class TestOptions( unittest.TestCase ):
         _self.assertEqual(
             [
                 _DummyOption(
-                    '--enable.test',
+                    '--enable.testmodule',
                     'store_true',
                     False,
                 ),
