@@ -2,6 +2,8 @@
 
 from . import taf
 
+MODULE_OPTION_PREFIX = 'enable.'
+
 def loadTools(
     _context,
 ):

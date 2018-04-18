@@ -27,12 +27,10 @@ class TestConfigure( unittest.TestCase ):
     ):
         context = _DummyContext()
 
-        context.options = {
-            'enable.testmodule' : True,
-            'enable.testmodule_disable' : False,
-            'otheroption1' : True,
-            'otheroption2' : False,
-        }
+        context.options.__dict__[ 'enable.testmodule' ] = True
+        context.options.__dict__[ 'enable.testmodule_disable' ] = False
+        context.options.__dict__[ 'otheroption1' ] = True
+        context.options.__dict__[ 'otheroption2' ] = False
 
         taf.TSCRIPTS_DIR = 'test.tscripts'
 
@@ -45,6 +43,9 @@ class TestConfigure( unittest.TestCase ):
 
     #TODO test_buildModules_dependModules
 
+class _DummyOptions:
+    pass
+
 class _DummyEnv:
     pass
 
@@ -53,7 +54,7 @@ class _DummyContext:
         _self,
     ):
         _self.tools = []
-        _self.options = {}
+        _self.options = _DummyOptions()
         _self.env = _DummyEnv()
 
     def load(
@@ -61,3 +62,10 @@ class _DummyContext:
         _tools,
     ):
         _self.tools.extend( _tools )
+
+    def msg(
+        _self,
+        _dummy1,
+        _dummy2,
+    ):
+        pass

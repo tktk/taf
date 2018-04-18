@@ -39,4 +39,4 @@ def _getModuleNames(
 def _optionModuleKey(
     _MODULE,
 ):
-    return '--' + taf.MODULE_OPTION_PREFIX + '.' + _MODULE
+    return '--' + common.MODULE_OPTION_PREFIX + _MODULE
