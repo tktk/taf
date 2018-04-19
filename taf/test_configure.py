@@ -32,7 +32,7 @@ class TestConfigure( unittest.TestCase ):
         context.options.__dict__[ 'otheroption1' ] = True
         context.options.__dict__[ 'otheroption2' ] = False
 
-        taf.TSCRIPTS_DIR = 'test.tscripts'
+        taf.TSCRIPTS_DIR = 'test.tscripts_configure'
 
         configure( context )
 

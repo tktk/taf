@@ -27,7 +27,7 @@ class TestOptions( unittest.TestCase ):
     ):
         context = _DummyContext()
 
-        taf.TSCRIPTS_DIR = 'test.tscripts'
+        taf.TSCRIPTS_DIR = 'test.tscripts_options'
 
         options( context )
 
