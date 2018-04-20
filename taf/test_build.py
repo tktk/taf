@@ -4,6 +4,7 @@ from . import build
 from . import taf
 
 import unittest
+import sys
 
 class TestBuild( unittest.TestCase ):
     def test_build(
@@ -16,11 +17,14 @@ class TestBuild( unittest.TestCase ):
         taf.PACKAGE_NAME = 'test_build'
 
         context.env.taf = {}
-        context.env.taf[ 'BUILD_MODULES' ] = [
+        BUILD_MODULES = [
             'testmodule1',
             'testmodule2',
             'testmodule3',
         ]
+        context.env.taf[ 'BUILD_MODULES' ] = BUILD_MODULES
+
+        _unloadModules( BUILD_MODULES )
 
         build( context )
 
@@ -122,13 +126,13 @@ class TestBuild( unittest.TestCase ):
             ],
             builds2.source,
         )
-        _self.assertIs(
-            None,
+        _self.assertEqual(
+            [],
             builds2.lib,
         )
         #TODO
-        _self.assertIs(
-            None,
+        _self.assertEqual(
+            [],
             builds2.use,
         )
 
@@ -177,18 +181,29 @@ class _DummyContext:
 
     def __call__(
         _self,
-        _features,
-        _target,
-        _source,
-        _lib,
-        _use,
+        features,
+        target,
+        source,
+        lib,
+        use,
     ):
         _self.builds.append(
             _DummyBuild(
-                _features,
-                _target,
-                _source,
-                _lib,
-                _use,
+                features,
+                target,
+                source,
+                lib,
+                use,
             )
         )
+
+def _unloadModules(
+    _MODULES,
+):
+    modules = sys.modules
+
+    for module in _MODULES:
+        modulePath = taf.TSCRIPTS_DIR + '.' + module
+
+        if modulePath in modules:
+            modules.pop( modulePath )
