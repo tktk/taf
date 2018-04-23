@@ -11,6 +11,8 @@ class TestOptions( unittest.TestCase ):
     ):
         context = _DummyContext()
 
+        taf.BUILD = 'debug'
+
         options( context )
 
         OPTION = _findOption(

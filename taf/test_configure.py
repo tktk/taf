@@ -6,6 +6,20 @@ from . import taf
 import unittest
 
 class TestConfigure( unittest.TestCase ):
+    def test_build(
+        _self,
+    ):
+        context = _DummyContext()
+
+        context.options.__dict__[ 'build' ] = 'debug'
+
+        configure( context )
+
+        _self.assertEqual(
+            'debug',
+            context.env.taf[ 'BUILD' ],
+        )
+
     def test_loadTools(
         _self,
     ):
