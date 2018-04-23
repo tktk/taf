@@ -13,15 +13,18 @@ class TestOptions( unittest.TestCase ):
 
         options( context )
 
+        OPTION = _findOption(
+            context,
+            'build',
+        )
+
         _self.assertEqual(
-            [
-                _DummyOption(
-                    '--build',
-                    'store',
-                    'debug',
-                ),
-            ],
-            context.options,
+            _DummyOption(
+                '--build',
+                'store',
+                'debug',
+            ),
+            OPTION,
         )
 
     def test_loadTools(
@@ -49,15 +52,18 @@ class TestOptions( unittest.TestCase ):
 
         options( context )
 
+        OPTION = _findOption(
+            context,
+            'enable.testmodule',
+        )
+
         _self.assertEqual(
-            [
-                _DummyOption(
-                    '--enable.testmodule',
-                    'store_true',
-                    False,
-                ),
-            ],
-            context.options,
+            _DummyOption(
+                '--enable.testmodule',
+                'store_true',
+                False,
+            ),
+            OPTION,
         )
 
 class _DummyContext:
@@ -112,6 +118,16 @@ class _DummyOption:
             return False
 
         return True
+
+def _findOption(
+    _context,
+    _KEY,
+):
+    for OPTION in _context.options:
+        if OPTION.key == '--' + _KEY:
+            return OPTION
+
+    return None
 
 if __name__ == '__main__':
     unittest.main()

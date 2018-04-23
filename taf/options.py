@@ -8,9 +8,19 @@ from pydoc import ModuleScanner
 def options(
     _context,
 ):
+    _addBuildOptions( _context )
     _addModuleOptions( _context )
 
     common.loadTools( _context )
+
+def _addBuildOptions(
+    _context,
+):
+    _context.add_option(
+        _optionKey( 'build' ),
+        action = 'store',
+        default = taf.BUILD,
+    )
 
 def _addModuleOptions(
     _context,
@@ -39,4 +49,9 @@ def _getModuleNames(
 def _optionModuleKey(
     _MODULE,
 ):
-    return '--' + common.MODULE_OPTION_PREFIX + _MODULE
+    return _optionKey( common.MODULE_OPTION_PREFIX + _MODULE )
+
+def _optionKey(
+    _NAME,
+):
+    return '--' + _NAME
