@@ -8,9 +8,22 @@ def configure(
 ):
     _context.env.taf = {}
 
+    _context.env.taf[ 'BUILD' ] = _getBuild( _context )
     _context.env.taf[ 'BUILD_MODULES' ] = _generateBuildModules( _context )
 
     common.loadTools( _context )
+
+def _getBuild(
+    _context,
+):
+    BUILD = _context.options.build
+
+    _context.msg(
+        'build',
+        BUILD,
+    )
+
+    return BUILD
 
 def _generateBuildModules(
     _context,

@@ -11,7 +11,7 @@ class TestConfigure( unittest.TestCase ):
     ):
         context = _DummyContext()
 
-        context.options.__dict__[ 'build' ] = 'debug'
+        context.options.build = 'debug'
 
         configure( context )
 
@@ -29,6 +29,8 @@ class TestConfigure( unittest.TestCase ):
             'testtools',
         ]
 
+        context.options.build = 'debug'
+
         configure( context )
 
         _self.assertEqual(
@@ -41,10 +43,11 @@ class TestConfigure( unittest.TestCase ):
     ):
         context = _DummyContext()
 
-        context.options.__dict__[ 'enable.testmodule' ] = True
-        context.options.__dict__[ 'enable.testmodule_disable' ] = False
-        context.options.__dict__[ 'otheroption1' ] = True
-        context.options.__dict__[ 'otheroption2' ] = False
+        context.options.build = 'debug'
+        context.options[ 'enable.testmodule' ] = True
+        context.options[ 'enable.testmodule_disable' ] = False
+        context.options.otheroption1 = True
+        context.options.otheroption2 = False
 
         taf.TSCRIPTS_DIR = 'test.tscripts_configure'
 
@@ -58,7 +61,28 @@ class TestConfigure( unittest.TestCase ):
     #TODO test_buildModules_dependModules
 
 class _DummyOptions:
-    pass
+    def __setattr__(
+        _self,
+        _name,
+        _value,
+    ):
+        _self.__dict__[ _name ] = _value
+
+    def __getattr__(
+        _self,
+        _name,
+    ):
+        return _self.__dict__[ _name ]
+
+    def __setitem__(
+        _self,
+        _name,
+        _value,
+    ):
+        _self.__setattr__(
+            _name,
+            _value,
+        )
 
 class _DummyEnv:
     pass
