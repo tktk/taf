@@ -6,6 +6,24 @@ from . import taf
 import unittest
 
 class TestOptions( unittest.TestCase ):
+    def test_build(
+        _self,
+    ):
+        context = _DummyContext()
+
+        options( context )
+
+        _self.assertEqual(
+            [
+                _DummyOption(
+                    '--build',
+                    'store',
+                    'debug',
+                ),
+            ],
+            context.options,
+        )
+
     def test_loadTools(
         _self,
     ):
