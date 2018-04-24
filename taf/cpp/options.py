@@ -11,10 +11,8 @@ def options(
 def _addIncludesOption(
     _context,
 ):
-    #TODO
-    pass
-#    _context.add_option(
-#        optionKey( 'include' ),
-#        action = 'append',
-#        default = None,
-#    )
+    _context.add_option(
+        optionKey( 'include' ),
+        action = 'append',
+        default = cpp.INCLUDES,
+    )
