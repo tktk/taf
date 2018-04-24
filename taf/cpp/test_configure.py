@@ -1,0 +1,76 @@
+# -*- coding: utf-8 -*-
+
+from . import configure
+from .. import taf
+
+import unittest
+
+class TestConfigure( unittest.TestCase ):
+    def test_includes(
+        _self,
+    ):
+        context = _DummyContext()
+
+        context.options.includes = [
+            'includedir1',
+            'includedir2',
+        ]
+
+        configure( context )
+
+        _self.assertEqual(
+            [
+                taf.INC_DIR,
+                'includedir1',
+                'includedir2',
+            ],
+            context.env.INCLUDES,
+        )
+
+class _DummyOptions:
+    def __setattr__(
+        _self,
+        _name,
+        _value,
+    ):
+        _self.__dict__[ _name ] = _value
+
+    def __getattr__(
+        _self,
+        _name,
+    ):
+        return _self.__dict__[ _name ]
+
+    def __setitem__(
+        _self,
+        _name,
+        _value,
+    ):
+        _self.__setattr__(
+            _name,
+            _value,
+        )
+
+class _DummyEnv:
+    pass
+
+class _DummyContext:
+    def __init__(
+        _self,
+    ):
+        _self.tools = []
+        _self.options = _DummyOptions()
+        _self.env = _DummyEnv()
+
+    def load(
+        _self,
+        _tools,
+    ):
+        _self.tools.extend( _tools )
+
+    def msg(
+        _self,
+        _dummy1,
+        _dummy2,
+    ):
+        pass
