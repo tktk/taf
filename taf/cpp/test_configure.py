@@ -11,7 +11,7 @@ class TestConfigure( unittest.TestCase ):
     ):
         context = _DummyContext()
 
-        context.options.includes = [
+        context.options.include = [
             'includedir1',
             'includedir2',
         ]
