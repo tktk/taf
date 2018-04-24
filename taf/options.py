@@ -17,7 +17,7 @@ def _addBuildOptions(
     _context,
 ):
     _context.add_option(
-        _optionKey( 'build' ),
+        optionKey( 'build' ),
         action = 'store',
         default = taf.BUILD,
     )
@@ -49,9 +49,9 @@ def _getModuleNames(
 def _optionModuleKey(
     _MODULE,
 ):
-    return _optionKey( common.MODULE_OPTION_PREFIX + _MODULE )
+    return optionKey( common.MODULE_OPTION_PREFIX + _MODULE )
 
-def _optionKey(
+def optionKey(
     _NAME,
 ):
     return '--' + _NAME
