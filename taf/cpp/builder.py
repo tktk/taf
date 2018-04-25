@@ -12,22 +12,16 @@ def program(
     _LIB,
     _USE,
 ):
-    _context(
-        features = [
+    _build(
+        [
             'cxx',
             'cxxprogram',
         ],
-        target = _TARGET,
-        source = builder.generateSource(
-            _SOURCE,
-            os.path.join(
-                taf.SRC_DIR,
-                taf.PACKAGE_NAME,
-            ),
-            '.cpp',
-        ),
-        lib = _LIB,
-        use = _USE,
+        _context,
+        _TARGET,
+        _SOURCE,
+        _LIB,
+        _USE,
     )
 
 def shlib(
@@ -37,18 +31,17 @@ def shlib(
     _LIB,
     _USE,
 ):
-    #TODO
-    pass
-#    _context(
-#        features = [
-#            'cxx',
-#            'cxxshlib',
-#        ],
-#        target = _TARGET,
-#        source = _SOURCE,
-#        lib = _LIB,
-#        use = _USE,
-#    )
+    _build(
+        [
+            'cxx',
+            'cxxshlib',
+        ],
+        _context,
+        _TARGET,
+        _SOURCE,
+        _LIB,
+        _USE,
+    )
 
 def gtest(
     _context,
@@ -74,3 +67,26 @@ def gtest(
 #        lib = lib,
 #        use = _USE,
 #    )
+
+def _build(
+    _FEATURES,
+    _context,
+    _TARGET,
+    _SOURCE,
+    _LIB,
+    _USE,
+):
+    _context(
+        features = _FEATURES,
+        target = _TARGET,
+        source = builder.generateSource(
+            _SOURCE,
+            os.path.join(
+                taf.SRC_DIR,
+                taf.PACKAGE_NAME,
+            ),
+            '.cpp',
+        ),
+        lib = _LIB,
+        use = _USE,
+    )
