@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from . import builder
+from .builder import *
+from .. import taf
 
 import unittest
 
@@ -10,7 +11,9 @@ class TestBuilder( unittest.TestCase ):
     ):
         context = _DummyContext()
 
-        builder.program(
+        taf.PACKAGE_NAME = 'package'
+
+        program(
             context,
             'target',
             [
