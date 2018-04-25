@@ -46,10 +46,12 @@ class TestBuild( unittest.TestCase ):
             builds0.target,
         )
         _self.assertEqual(
-            [
-                'src/test_build/testmodule1/src1.cpp',
-                'src/test_build/testmodule1/src2.cpp',
-            ],
+            {
+                'testmodule1' : [
+                    'src1.cpp',
+                    'src2.cpp',
+                ],
+            },
             builds0.source,
         )
         _self.assertEqual(
@@ -81,14 +83,22 @@ class TestBuild( unittest.TestCase ):
             builds1.target,
         )
         _self.assertEqual(
-            [
-                'src/test_build/testmodule2/a/src1.cpp',
-                'src/test_build/testmodule2/a/src2.cpp',
-                'src/test_build/testmodule2/b/src1.cpp',
-                'src/test_build/testmodule2/b/src2.cpp',
-                'src/test_build/testmodule2/c/src1.cpp',
-                'src/test_build/testmodule2/c/src2.cpp',
-            ],
+            {
+                'testmodule2' : {
+                    'c' : [
+                        'src2.cpp',
+                        'src1.cpp',
+                    ],
+                    'b' : [
+                        'src2.cpp',
+                        'src1.cpp',
+                    ],
+                    'a' : [
+                        'src2.cpp',
+                        'src1.cpp',
+                    ],
+                },
+            },
             builds1.source,
         )
         _self.assertEqual(
@@ -120,10 +130,12 @@ class TestBuild( unittest.TestCase ):
             builds2.target,
         )
         _self.assertEqual(
-            [
-                'src/test_build/testmodule3/src1.cpp',
-                'src/test_build/testmodule3/src2.cpp',
-            ],
+            {
+                'testmodule3' : [
+                    'src1.cpp',
+                    'src2.cpp',
+                ],
+            },
             builds2.source,
         )
         _self.assertEqual(
