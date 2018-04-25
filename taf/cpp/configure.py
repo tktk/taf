@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from .. import taf
+from . import cpp
 
 def configure(
     _context,
@@ -12,7 +12,7 @@ def _generateIncludes(
 ):
     includes = []
 
-    includes.append( taf.INC_DIR )
+    includes.append( cpp.HEADER_DIR )
 
     INCLUDE_OPTION = _context.options.include
     if INCLUDE_OPTION is not None:

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from . import configure
-from .. import taf
+from . import cpp
 
 import unittest
 
@@ -20,7 +20,7 @@ class TestConfigure( unittest.TestCase ):
 
         _self.assertEqual(
             [
-                taf.INC_DIR,
+                cpp.HEADER_DIR,
                 'includedir1',
                 'includedir2',
             ],

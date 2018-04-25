@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from . import cpp
 from .. import builder
 from .. import taf
 
@@ -77,7 +78,7 @@ def _build(
         source = builder.generateSource(
             _SOURCE,
             os.path.join(
-                taf.SRC_DIR,
+                cpp.SOURCE_DIR,
                 taf.PACKAGE_NAME,
             ),
             '.cpp',
