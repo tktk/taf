@@ -106,7 +106,59 @@ class TestBuilder( unittest.TestCase ):
             BUILD.use,
         )
 
-    #TODO test_gtest
+    def test_gtest(
+        _self,
+    ):
+        context = _DummyContext()
+
+        taf.PACKAGE_NAME = 'package'
+
+        gtest(
+            context,
+            'target',
+            [
+                'source2',
+                'source1',
+            ],
+            [
+                'lib',
+            ],
+            [
+                'use',
+            ],
+        )
+
+        BUILD = context.builds[ 0 ]
+        _self.assertEqual(
+            [
+                'cxx',
+                'cxxprogram',
+                'test',
+            ],
+            BUILD.features,
+        )
+        _self.assertEqual(
+            'target',
+            BUILD.target,
+        )
+        _self.assertEqual(
+            [
+                'src/package/source1.cpp',
+                'src/package/source2.cpp',
+            ],
+            BUILD.source,
+        )
+        _self.assertEqual(
+            [
+                'gtest',
+                'lib',
+            ],
+            BUILD.lib,
+        )
+        _self.assertEqual(
+            [ 'use' ],
+            BUILD.use,
+        )
 
 class _DummyBuild:
     def __init__(
