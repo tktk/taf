@@ -150,8 +150,8 @@ class TestBuilder( unittest.TestCase ):
         )
         _self.assertEqual(
             [
-                'gtest',
                 'lib',
+                'gtest',
             ],
             BUILD.lib,
         )

@@ -50,23 +50,18 @@ def gtest(
     _LIB,
     _USE,
 ):
-    #TODO
-    pass
-#    lib = []
-#    lib.append( 'gtest' )
-#    lib.extend( _LIB )
-#
-#    _context(
-#        features = [
-#            'cxx',
-#            'cxxprogram',
-#            'test',
-#        ],
-#        target = _TARGET,
-#        source = _SOURCE,
-#        lib = lib,
-#        use = _USE,
-#    )
+    _build(
+        [
+            'cxx',
+            'cxxprogram',
+            'test',
+        ],
+        _context,
+        _TARGET,
+        _SOURCE,
+        _LIB + [ 'gtest' ],
+        _USE,
+    )
 
 def _build(
     _FEATURES,
