@@ -39,4 +39,28 @@ class TestBuild( unittest.TestCase ):
             ),
         )
 
-    #TODO test_generateSourceForDict
+    def test_generateSourceForDict(
+        _self,
+    ):
+        _self.assertEqual(
+            [
+                'sourcedir/dir1/test1.txt',
+                'sourcedir/dir1/test2.txt',
+                'sourcedir/dir2/test1.txt',
+                'sourcedir/dir2/test2.txt',
+            ],
+            builder.generateSource(
+                {
+                    'dir2' : [
+                        'test2',
+                        'test1',
+                    ],
+                    'dir1' : [
+                        'test1',
+                        'test2',
+                    ],
+                },
+                'sourcedir',
+                '.txt',
+            ),
+        )
