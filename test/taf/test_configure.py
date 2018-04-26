@@ -44,8 +44,8 @@ class TestConfigure( unittest.TestCase ):
         context = _DummyContext()
 
         context.options.build = 'debug'
-        context.options[ 'enable.testmodule' ] = True
-        context.options[ 'enable.testmodule_disable' ] = False
+        context.options[ 'enable.module' ] = True
+        context.options[ 'enable.module_disable' ] = False
         context.options.otheroption1 = True
         context.options.otheroption2 = False
 
@@ -54,7 +54,7 @@ class TestConfigure( unittest.TestCase ):
         configure( context )
 
         _self.assertEqual(
-            [ 'testmodule' ],
+            [ 'module' ],
             context.env.taf[ 'BUILD_MODULES' ],
         )
 
@@ -64,8 +64,8 @@ class TestConfigure( unittest.TestCase ):
         context = _DummyContext()
 
         context.options.build = 'debug'
-        context.options[ 'enable.testmodule1' ] = True
-        context.options[ 'enable.testmodule_disable' ] = False
+        context.options[ 'enable.module1' ] = True
+        context.options[ 'enable.module_disable' ] = False
         context.options.otheroption1 = True
         context.options.otheroption2 = False
 
@@ -75,9 +75,9 @@ class TestConfigure( unittest.TestCase ):
 
         _self.assertEqual(
             [
-                'testmodule1',
-                'testmodule2',
-                'testmodule3',
+                'module1',
+                'module2',
+                'module3',
             ],
             context.env.taf[ 'BUILD_MODULES' ],
         )

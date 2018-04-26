@@ -18,13 +18,11 @@ class TestBuild( unittest.TestCase ):
 
         context.env.taf = {}
         BUILD_MODULES = [
-            'testmodule1',
-            'testmodule2',
-            'testmodule3',
+            'module1',
+            'module2',
+            'module3',
         ]
         context.env.taf[ 'BUILD_MODULES' ] = BUILD_MODULES
-
-        _unloadModules( BUILD_MODULES )
 
         build( context )
 
@@ -42,12 +40,12 @@ class TestBuild( unittest.TestCase ):
             builds0.features,
         )
         _self.assertEqual(
-            'testmodule1',
+            'module1',
             builds0.target,
         )
         _self.assertEqual(
             {
-                'testmodule1' : [
+                'module1' : [
                     'src1.cpp',
                     'src2.cpp',
                 ],
@@ -79,12 +77,12 @@ class TestBuild( unittest.TestCase ):
             builds1.features,
         )
         _self.assertEqual(
-            'testmodule2',
+            'module2',
             builds1.target,
         )
         _self.assertEqual(
             {
-                'testmodule2' : {
+                'module2' : {
                     'c' : [
                         'src2.cpp',
                         'src1.cpp',
@@ -126,12 +124,12 @@ class TestBuild( unittest.TestCase ):
             builds2.features,
         )
         _self.assertEqual(
-            'testmodule3',
+            'module3',
             builds2.target,
         )
         _self.assertEqual(
             {
-                'testmodule3' : [
+                'module3' : [
                     'src1.cpp',
                     'src2.cpp',
                 ],
@@ -208,14 +206,3 @@ class _DummyContext:
                 use,
             )
         )
-
-def _unloadModules(
-    _MODULES,
-):
-    modules = sys.modules
-
-    for module in _MODULES:
-        modulePath = taf.TSCRIPTS_DIR + '.' + module
-
-        if modulePath in modules:
-            modules.pop( modulePath )

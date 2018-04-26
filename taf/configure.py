@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from . import common
-from . import taf
+from . import module
 
 def configure(
     _context,
@@ -61,14 +61,13 @@ def _addBuildModules(
 
     _buildModules.append( _MODULE )
 
-    #TODO 依存モジュールの追加
+    common.importModule( _MODULE )
 
-#    module = _importModule( _MODULE )
-#
-#    DEPEND_MODULES = module.getDependModules()
-#
-#    for DEPEND_MODULE in DEPEND_MODULES:
-#        _addBuildModules(
-#            _buildModules,
-#            DEPEND_MODULE,
-#        )
+    DEPENDS = module.DEPENDS
+
+    if DEPENDS is not None:
+        for DEPEND_MODULE in DEPENDS:
+            _addBuildModules(
+                _buildModules,
+                DEPEND_MODULE,
+            )

@@ -56,12 +56,12 @@ class TestOptions( unittest.TestCase ):
 
         OPTION = _findOption(
             context,
-            'enable.testmodule',
+            'enable.module',
         )
 
         _self.assertEqual(
             _DummyOption(
-                '--enable.testmodule',
+                '--enable.module',
                 'store_true',
                 False,
             ),

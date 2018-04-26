@@ -22,10 +22,10 @@ def _build(
 
 module.BUILDER = _build
 
-module.TARGET = 'testmodule1'
+module.TARGET = 'module1'
 
 module.SOURCE = {
-    'testmodule1' : [
+    'module1' : [
         'src1.cpp',
         'src2.cpp',
     ],

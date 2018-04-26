@@ -3,5 +3,5 @@
 from taf import *
 
 module.DEPENDS = [
-    'testmodule2',
+    'module2',
 ]
