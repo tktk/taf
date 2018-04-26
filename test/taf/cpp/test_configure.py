@@ -27,6 +27,29 @@ class TestConfigure( unittest.TestCase ):
             context.env.INCLUDES,
         )
 
+    def test_includesUser(
+        _self,
+    ):
+        context = _DummyContext()
+
+        context.options.include = [
+            'includedir1',
+            'includedir2',
+        ]
+
+        cpp.HEADER_DIR = 'userinc'
+
+        configure( context )
+
+        _self.assertEqual(
+            [
+                'userinc',
+                'includedir1',
+                'includedir2',
+            ],
+            context.env.INCLUDES,
+        )
+
 class _DummyOptions:
     def __setattr__(
         _self,
