@@ -30,7 +30,7 @@ class TestOptions( unittest.TestCase ):
             OPTION,
         )
 
-    def test_includes(
+    def test_includesUserIncludes(
         _self,
     ):
         context = _DummyContext()

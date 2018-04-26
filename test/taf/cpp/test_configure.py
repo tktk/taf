@@ -27,7 +27,7 @@ class TestConfigure( unittest.TestCase ):
             context.env.INCLUDES,
         )
 
-    def test_includesUser(
+    def test_includesUserHeaderDir(
         _self,
     ):
         context = _DummyContext()

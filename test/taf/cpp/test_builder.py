@@ -56,6 +56,58 @@ class TestBuilder( unittest.TestCase ):
             BUILD.use,
         )
 
+    def test_programUserSourceDir(
+        _self,
+    ):
+        context = _DummyContext()
+
+        taf.PACKAGE_NAME = 'package'
+
+        cpp.SOURCE_DIR = 'usersrc'
+
+        cpp.program(
+            context,
+            'target',
+            [
+                'source2',
+                'source1',
+            ],
+            [
+                'lib',
+            ],
+            [
+                'use',
+            ],
+        )
+
+        BUILD = context.builds[ 0 ]
+        _self.assertEqual(
+            [
+                'cxx',
+                'cxxprogram',
+            ],
+            BUILD.features,
+        )
+        _self.assertEqual(
+            'target',
+            BUILD.target,
+        )
+        _self.assertEqual(
+            [
+                'usersrc/package/source1.cpp',
+                'usersrc/package/source2.cpp',
+            ],
+            BUILD.source,
+        )
+        _self.assertEqual(
+            [ 'lib' ],
+            BUILD.lib,
+        )
+        _self.assertEqual(
+            [ 'use' ],
+            BUILD.use,
+        )
+
     def test_shlib(
         _self,
     ):
