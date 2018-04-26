@@ -14,5 +14,5 @@ def _addIncludesOption(
     _context.add_option(
         optionKey( 'include' ),
         action = 'append',
-        default = INCLUDES,
+        default = getIncludes(),
     )
