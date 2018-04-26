@@ -11,6 +11,8 @@ def options(
 def _addIncludesOption(
     _context,
 ):
+    _context.load( 'compiler_cxx' )
+
     _context.add_option(
         optionKey( 'include' ),
         action = 'append',

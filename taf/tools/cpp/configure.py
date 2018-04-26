@@ -10,6 +10,8 @@ def configure(
 def _generateIncludes(
     _context,
 ):
+    _context.load( 'compiler_cxx' )
+
     includes = []
 
     includes.append( getHeaderDir() )
