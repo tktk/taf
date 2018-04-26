@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from .builder import *
-from .. import taf
+from taf import cpp
+from taf import *
 
 import unittest
 
@@ -13,7 +13,7 @@ class TestBuilder( unittest.TestCase ):
 
         taf.PACKAGE_NAME = 'package'
 
-        program(
+        cpp.program(
             context,
             'target',
             [
@@ -63,7 +63,7 @@ class TestBuilder( unittest.TestCase ):
 
         taf.PACKAGE_NAME = 'package'
 
-        shlib(
+        cpp.shlib(
             context,
             'target',
             [
@@ -113,7 +113,7 @@ class TestBuilder( unittest.TestCase ):
 
         taf.PACKAGE_NAME = 'package'
 
-        gtest(
+        cpp.gtest(
             context,
             'target',
             [

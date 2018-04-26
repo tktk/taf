@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from . import options
+from taf.cpp import options
 
 import unittest
 
