@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from taf.cpp import options
+from taf import cpp
 
 import unittest
 
@@ -25,6 +26,35 @@ class TestOptions( unittest.TestCase ):
                 '--include',
                 'append',
                 None,
+            ),
+            OPTION,
+        )
+
+    def test_includes(
+        _self,
+    ):
+        context = _DummyContext()
+
+        cpp.INCLUDES = [
+            'inc1',
+            'inc2',
+        ]
+
+        options( context )
+
+        OPTION = _findOption(
+            context,
+            'include',
+        )
+
+        _self.assertEqual(
+            _DummyOption(
+                '--include',
+                'append',
+                [
+                    'inc1',
+                    'inc2',
+                ],
             ),
             OPTION,
         )
