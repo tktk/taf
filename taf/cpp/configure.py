@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from . import cpp
+from . import *
 
 def configure(
     _context,
@@ -12,7 +12,7 @@ def _generateIncludes(
 ):
     includes = []
 
-    includes.append( cpp.HEADER_DIR )
+    includes.append( HEADER_DIR )
 
     INCLUDE_OPTION = _context.options.include
     if INCLUDE_OPTION is not None:

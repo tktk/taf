@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from . import configure
-from . import cpp
+from . import *
 
 import unittest
 
@@ -20,7 +20,7 @@ class TestConfigure( unittest.TestCase ):
 
         _self.assertEqual(
             [
-                cpp.HEADER_DIR,
+                HEADER_DIR,
                 'includedir1',
                 'includedir2',
             ],

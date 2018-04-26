@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from . import cpp
+from . import *
 from ..options import optionKey
 
 def options(
@@ -14,5 +14,5 @@ def _addIncludesOption(
     _context.add_option(
         optionKey( 'include' ),
         action = 'append',
-        default = cpp.INCLUDES,
+        default = INCLUDES,
     )
