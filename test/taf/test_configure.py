@@ -58,7 +58,29 @@ class TestConfigure( unittest.TestCase ):
             context.env.taf[ 'BUILD_MODULES' ],
         )
 
-    #TODO test_buildModules_dependModules
+    def test_buildModules_dependModules(
+        _self,
+    ):
+        context = _DummyContext()
+
+        context.options.build = 'debug'
+        context.options[ 'enable.testmodule1' ] = True
+        context.options[ 'enable.testmodule_disable' ] = False
+        context.options.otheroption1 = True
+        context.options.otheroption2 = False
+
+        taf.TSCRIPTS_DIR = 'test.tscripts_configure'
+
+        configure( context )
+
+        _self.assertEqual(
+            [
+                'testmodule1',
+                'testmodule2',
+                'testmodule3',
+            ],
+            context.env.taf[ 'BUILD_MODULES' ],
+        )
 
 class _DummyOptions:
     def __setattr__(
