@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from taf.cpp import configure
-from taf import cpp
+from taf.tools.cpp import configure
+from taf.tools import cpp
 
 import unittest
 

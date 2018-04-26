@@ -2,7 +2,7 @@
 
 from . import *
 from .. import builder
-from .. import taf
+from ... import taf
 
 import os.path
 

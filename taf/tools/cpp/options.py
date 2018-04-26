@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from . import *
-from ..options import optionKey
+from ...options import optionKey
 
 def options(
     _context,
