@@ -12,7 +12,7 @@ def _generateIncludes(
 ):
     includes = []
 
-    includes.append( HEADER_DIR )
+    includes.append( getHeaderDir() )
 
     INCLUDE_OPTION = _context.options.include
     if INCLUDE_OPTION is not None:

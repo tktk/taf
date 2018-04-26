@@ -9,6 +9,10 @@ def getIncludes(
 ):
     return INCLUDES
 
+def getHeaderDir(
+):
+    return HEADER_DIR
+
 from .options import options
 from .configure import configure
 
