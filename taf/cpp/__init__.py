@@ -9,6 +9,10 @@ def getIncludes(
 ):
     return INCLUDES
 
+def getSourceDir(
+):
+    return SOURCE_DIR
+
 def getHeaderDir(
 ):
     return HEADER_DIR

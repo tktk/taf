@@ -78,7 +78,7 @@ def _build(
         source = builder.generateSource(
             _SOURCE,
             os.path.join(
-                SOURCE_DIR,
+                getSourceDir(),
                 taf.PACKAGE_NAME,
             ),
             '.cpp',

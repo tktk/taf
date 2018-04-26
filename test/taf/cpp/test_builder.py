@@ -13,6 +13,8 @@ class TestBuilder( unittest.TestCase ):
 
         taf.PACKAGE_NAME = 'package'
 
+        cpp.SOURCE_DIR = 'src'
+
         cpp.program(
             context,
             'target',
@@ -115,6 +117,8 @@ class TestBuilder( unittest.TestCase ):
 
         taf.PACKAGE_NAME = 'package'
 
+        cpp.SOURCE_DIR = 'src'
+
         cpp.shlib(
             context,
             'target',
@@ -164,6 +168,8 @@ class TestBuilder( unittest.TestCase ):
         context = _DummyContext()
 
         taf.PACKAGE_NAME = 'package'
+
+        cpp.SOURCE_DIR = 'src'
 
         cpp.gtest(
             context,
