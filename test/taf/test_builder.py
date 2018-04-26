@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from . import builder
+from taf import builder
 
 import unittest
 

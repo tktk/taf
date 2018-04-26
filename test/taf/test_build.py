@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from . import build
-from . import taf
+from taf import build
+from taf import taf
 
 import unittest
 import sys

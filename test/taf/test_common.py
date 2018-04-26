@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from . import common
-from . import taf
+from taf import common
+from taf import taf
 
 import unittest
 

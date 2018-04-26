@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from . import configure
-from . import taf
+from taf import configure
+from taf import taf
 
 import unittest
 
