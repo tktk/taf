@@ -214,7 +214,10 @@ class TestBuilder( unittest.TestCase ):
             BUILD.lib,
         )
         _self.assertEqual(
-            [ 'use' ],
+            [
+                'use',
+                'TEST',
+            ],
             BUILD.use,
         )
 
