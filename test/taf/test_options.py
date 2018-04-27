@@ -6,13 +6,10 @@ from taf import taf
 import unittest
 
 class TestOptions( unittest.TestCase ):
-    #TODO 初期値をNoneにする
     def test_build(
         _self,
     ):
         context = _DummyContext()
-
-        taf.BUILD = 'debug'
 
         options( context )
 
@@ -25,7 +22,7 @@ class TestOptions( unittest.TestCase ):
             _DummyOption(
                 '--build',
                 'store',
-                'debug',
+                None,
             ),
             OPTION,
         )
