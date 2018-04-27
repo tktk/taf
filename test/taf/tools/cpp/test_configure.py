@@ -134,7 +134,33 @@ class TestConfigure( unittest.TestCase ):
             context.env.CXXFLAGS,
         )
 
-    #TODO test_cxxflagsGccRelease
+    def test_cxxflagsGccRelease(
+        _self,
+    ):
+        context = _DummyContext()
+
+        context.env.taf = {
+            'BUILD_TYPE' : 'release',
+        }
+
+        context.options.compilertype = 'gcc'
+
+        context.options.linkertype = None
+        context.options.include = None
+
+        configure( context )
+
+        _self.assertEqual(
+            [
+                '-Wall',
+                '-fno-rtti',
+                '-fvisibility=hidden',
+                '-std=c++14',
+                '-O2',
+            ],
+            context.env.CXXFLAGS,
+        )
+
     #TODO test_cxxflagsMsvcDebug
     #TODO test_cxxflagsMsvcRelease
     #TODO test_definesGccDebug
