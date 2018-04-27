@@ -161,7 +161,34 @@ class TestConfigure( unittest.TestCase ):
             context.env.CXXFLAGS,
         )
 
-    #TODO test_cxxflagsMsvcDebug
+    def test_cxxflagsMsvcDebug(
+        _self,
+    ):
+        context = _DummyContext()
+
+        context.env.taf = {
+            'BUILD_TYPE' : 'debug',
+        }
+
+        context.options.compilertype = 'msvc'
+
+        context.options.linkertype = None
+        context.options.include = None
+
+        configure( context )
+
+        _self.assertEqual(
+            [
+                '/Wall',
+                '/GR-',
+                '/nologo',
+                '/EHs',
+                '/MDd',
+                '/Od',
+            ],
+            context.env.CXXFLAGS,
+        )
+
     #TODO test_cxxflagsMsvcRelease
     #TODO test_definesGccDebug
     #TODO test_definesGccRelease
