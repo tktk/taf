@@ -110,7 +110,7 @@ def _generateCxxflagsMsvc(
     BUILD_TYPE = _context.env.taf[ 'BUILD_TYPE' ]
     if BUILD_TYPE == 'debug':
         cxxflags = getCxxflagsMsvcDebug()
-    #elif BUILD_TYPE == 'release':
-    #    cxxflags = getCxxflagsMsvcRelease()
+    elif BUILD_TYPE == 'release':
+        cxxflags = getCxxflagsMsvcRelease()
 
     return cxxflags
