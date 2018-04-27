@@ -11,7 +11,9 @@ class TestConfigure( unittest.TestCase ):
     ):
         context = _DummyContext()
 
-        context.env.taf = {}
+        context.env.taf = {
+            'BUILD_TYPE' : 'debug',
+        }
 
         context.options.compilertype = None
 
@@ -30,7 +32,9 @@ class TestConfigure( unittest.TestCase ):
     ):
         context = _DummyContext()
 
-        context.env.taf = {}
+        context.env.taf = {
+            'BUILD_TYPE' : 'debug',
+        }
 
         context.options.linkertype = None
 
@@ -49,7 +53,9 @@ class TestConfigure( unittest.TestCase ):
     ):
         context = _DummyContext()
 
-        context.env.taf = {}
+        context.env.taf = {
+            'BUILD_TYPE' : 'debug',
+        }
 
         context.options.compilertype = None
         context.options.linkertype = None
@@ -75,7 +81,9 @@ class TestConfigure( unittest.TestCase ):
     ):
         context = _DummyContext()
 
-        context.env.taf = {}
+        context.env.taf = {
+            'BUILD_TYPE' : 'debug',
+        }
 
         context.options.compilertype = None
         context.options.linkertype = None
@@ -103,7 +111,9 @@ class TestConfigure( unittest.TestCase ):
     ):
         context = _DummyContext()
 
-        context.env.taf = {}
+        context.env.taf = {
+            'BUILD_TYPE' : 'debug',
+        }
 
         context.options.compilertype = 'gcc'
 

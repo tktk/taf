@@ -5,6 +5,20 @@ INCLUDES = None
 SOURCE_DIR = 'src'
 HEADER_DIR = 'inc'
 
+CXXFLAGS_GCC_COMMON_DEFAULT = [
+    '-Wall',
+    '-fno-rtti',
+    '-fvisibility=hidden',
+    '-std=c++14',
+]
+
+CXXFLAGS_GCC_DEBUG_DEFAULT = [
+    '-O0',
+    '-g'
+]
+
+CXXFLAGS_GCC_DEBUG = CXXFLAGS_GCC_COMMON_DEFAULT + CXXFLAGS_GCC_DEBUG_DEFAULT
+
 def getIncludes(
 ):
     return INCLUDES
@@ -16,6 +30,10 @@ def getSourceDir(
 def getHeaderDir(
 ):
     return HEADER_DIR
+
+def getCxxflagsGccDebug(
+):
+    return CXXFLAGS_GCC_DEBUG
 
 from .options import options
 from .configure import configure

@@ -9,9 +9,10 @@ def configure(
 ):
     _context.load( 'compiler_cxx' )
 
-    _context.env.taf[ 'COMPILER_TYPE' ] = _getCompilerType( _context )
-    _context.env.taf[ 'LINKER_TYPE' ] = _getLinkerType( _context )
+    _context.env.taf[ 'COMPILER_TYPE' ] = _getCompilerType( _context )  #REMOVEME
+    _context.env.taf[ 'LINKER_TYPE' ] = _getLinkerType( _context )  #REMOVEME
     _context.env.INCLUDES = _generateIncludes( _context )
+    _context.env.CXXFLAGS = _generateCxxflags( _context )
 
 def _getCompilerType(
     _context,
@@ -74,3 +75,25 @@ def _generateIncludes(
     )
 
     return includes
+
+def _generateCxxflags(
+    _context,
+):
+    cxxflags = None
+
+    COMPILER_TYPE = _context.env.taf[ 'COMPILER_TYPE' ]
+    if COMPILER_TYPE == 'gcc':
+        cxxflags = _generateCxxflagsGcc( _context )
+
+    return cxxflags
+
+def _generateCxxflagsGcc(
+    _context,
+):
+    cxxflags = None
+
+    BUILD_TYPE = _context.env.taf[ 'BUILD_TYPE' ]
+    if BUILD_TYPE == 'debug':
+        cxxflags = getCxxflagsGccDebug()
+
+    return cxxflags
