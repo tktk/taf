@@ -219,10 +219,100 @@ class TestConfigure( unittest.TestCase ):
             context.env.CXXFLAGS,
         )
 
-    #TODO test_definesGccDebug
-    #TODO test_definesGccRelease
-    #TODO test_definesMsvcDebug
-    #TODO test_definesMsvcRelease
+    def test_definesGccDebug(
+        _self,
+    ):
+        context = _DummyContext()
+
+        context.env.taf = {
+            'BUILD_TYPE' : 'debug',
+        }
+
+        context.options.compilertype = 'gcc'
+
+        context.options.linkertype = None
+        context.options.include = None
+
+        configure( context )
+
+        _self.assertEqual(
+            [
+                'COMPILER_TYPE_GCC',
+                'DEBUG',
+            ],
+            context.env.DEFINES,
+        )
+
+    def test_definesGccRelease(
+        _self,
+    ):
+        context = _DummyContext()
+
+        context.env.taf = {
+            'BUILD_TYPE' : 'release',
+        }
+
+        context.options.compilertype = 'gcc'
+
+        context.options.linkertype = None
+        context.options.include = None
+
+        configure( context )
+
+        _self.assertEqual(
+            [
+                'COMPILER_TYPE_GCC',
+            ],
+            context.env.DEFINES,
+        )
+
+    def test_definesMsvcDebug(
+        _self,
+    ):
+        context = _DummyContext()
+
+        context.env.taf = {
+            'BUILD_TYPE' : 'debug',
+        }
+
+        context.options.compilertype = 'msvc'
+
+        context.options.linkertype = None
+        context.options.include = None
+
+        configure( context )
+
+        _self.assertEqual(
+            [
+                'COMPILER_TYPE_MSVC',
+                'DEBUG',
+            ],
+            context.env.DEFINES,
+        )
+
+    def test_definesMsvcRelease(
+        _self,
+    ):
+        context = _DummyContext()
+
+        context.env.taf = {
+            'BUILD_TYPE' : 'release',
+        }
+
+        context.options.compilertype = 'msvc'
+
+        context.options.linkertype = None
+        context.options.include = None
+
+        configure( context )
+
+        _self.assertEqual(
+            [
+                'COMPILER_TYPE_MSVC',
+            ],
+            context.env.DEFINES,
+        )
+
     #TODO test_linkflagsLdDebug
     #TODO test_linkflagsLdRelease
     #TODO test_linkflagsMsvcDebug
