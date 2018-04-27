@@ -17,12 +17,11 @@ class TestBuild( unittest.TestCase ):
         taf.PACKAGE_NAME = 'test_build'
 
         context.env.taf = {}
-        BUILD_MODULES = [
+        context.env.taf[ 'BUILD_MODULES' ] = [
             'module1',
             'module2',
             'module3',
         ]
-        context.env.taf[ 'BUILD_MODULES' ] = BUILD_MODULES
 
         build( context )
 
@@ -146,6 +145,44 @@ class TestBuild( unittest.TestCase ):
             builds2.use,
         )
 
+    def test_addPostFunctions(
+        _self,
+    ):
+        context = _DummyContext()
+
+        context.env.taf = {}
+        context.env.taf[ 'BUILD_MODULES' ] = []
+
+        build( context )
+
+        _self.assertEqual(
+            [],
+            context.postFunctions,
+        )
+
+    def test_addPostFunctionsUserPostFunctions(
+        _self,
+    ):
+        context = _DummyContext()
+
+        taf.POST_FUNCTIONS = [
+            'postfunction1',
+            'postfunction2',
+        ]
+
+        context.env.taf = {}
+        context.env.taf[ 'BUILD_MODULES' ] = []
+
+        build( context )
+
+        _self.assertEqual(
+            [
+                'postfunction1',
+                'postfunction2',
+            ],
+            context.postFunctions,
+        )
+
 class _DummyOptions:
     pass
 
@@ -175,6 +212,7 @@ class _DummyContext:
         _self.options = _DummyOptions()
         _self.env = _DummyEnv()
         _self.builds = []
+        _self.postFunctions = []
 
     def load(
         _self,
@@ -188,6 +226,12 @@ class _DummyContext:
         _dummy2,
     ):
         pass
+
+    def add_post_fun(
+        _self,
+        _FUNCTION,
+    ):
+        _self.postFunctions.append( _FUNCTION )
 
     def __call__(
         _self,
