@@ -6,6 +6,22 @@ from taf.tools import cpp
 import unittest
 
 class TestConfigure( unittest.TestCase ):
+    def test_compilerTypeForLinux(
+        _self,
+    ):
+        context = _DummyContext()
+
+        context.options.compilertype = None
+
+        configure( context )
+
+        _self.assertEqual(
+            'gcc',
+            context.env.taf[ 'cOMPILER_TYPE' ],
+        )
+
+    #TODO test_linkerTypeForLinux
+
     def test_includes(
         _self,
     ):
