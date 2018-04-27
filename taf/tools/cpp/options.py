@@ -9,6 +9,7 @@ def options(
     _context.load( 'compiler_cxx' )
 
     _addCompilerTypeOption( _context )
+    _addLinkerTypeOption( _context )
     _addIncludesOption( _context )
 
 def _addCompilerTypeOption(
@@ -16,6 +17,15 @@ def _addCompilerTypeOption(
 ):
     _context.add_option(
         optionKey( 'compilertype' ),
+        action = 'store',
+        default = None,
+    )
+
+def _addLinkerTypeOption(
+    _context,
+):
+    _context.add_option(
+        optionKey( 'linkertype' ),
         action = 'store',
         default = None,
     )
