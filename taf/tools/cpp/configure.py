@@ -14,6 +14,7 @@ def configure(
     _context.env.INCLUDES = _generateIncludes( _context )
     _context.env.CXXFLAGS = _generateCxxflags( _context )
     _context.env.DEFINES = _generateDefines( _context )
+    _context.env.LINKFLAGS = _generateLinkflags( _context )
 
 def _getCompilerType(
     _context,
@@ -154,3 +155,42 @@ def _generateDefinesMsvc(
         defines = getDefinesMsvcRelease()
 
     return defines
+
+def _generateLinkflags(
+    _context,
+):
+    linkflags = None
+
+    LINKER_TYPE = _context.env.taf[ 'LINKER_TYPE' ]
+    if LINKER_TYPE == 'ld':
+        linkflags = _generateLinkflagsLd( _context )
+    elif LINKER_TYPE == 'msvc':
+        linkflags = _generateLinkflagsMsvc( _context )
+
+    return linkflags
+
+def _generateLinkflagsLd(
+    _context,
+):
+    linkflags = None
+
+    BUILD_TYPE = _context.env.taf[ 'BUILD_TYPE' ]
+    if BUILD_TYPE == 'debug':
+        linkflags = getLinkflagsLdDebug()
+    elif BUILD_TYPE == 'release':
+        linkflags = getLinkflagsLdRelease()
+
+    return linkflags
+
+def _generateLinkflagsMsvc(
+    _context,
+):
+    linkflags = None
+
+    BUILD_TYPE = _context.env.taf[ 'BUILD_TYPE' ]
+    if BUILD_TYPE == 'debug':
+        linkflags = getLinkflagsMsvcDebug()
+    elif BUILD_TYPE == 'release':
+        linkflags = getLinkflagsMsvcRelease()
+
+    return linkflags
