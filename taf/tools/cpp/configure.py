@@ -10,6 +10,7 @@ def configure(
     _context.load( 'compiler_cxx' )
 
     _context.env.taf[ 'COMPILER_TYPE' ] = _getCompilerType( _context )
+    _context.env.taf[ 'LINKER_TYPE' ] = _getLinkerType( _context )
     _context.env.INCLUDES = _generateIncludes( _context )
 
 def _getCompilerType(
@@ -33,6 +34,28 @@ def _getDefaultCompilerType(
         compilerType = 'msvc'
 
     return compilerType
+
+def _getLinkerType(
+    _context,
+):
+    linkerType = _context.options.linkertype
+
+    if linkerType is None:
+        linkerType = _getDefaultLinkerType()
+
+    return linkerType
+
+def _getDefaultLinkerType(
+):
+    linkerType = None
+
+    PLATFORM = Utils.unversioned_sys_platform()
+    if PLATFORM == 'linux':
+        linkerType = 'ld'
+    elif PLATFORM == 'win32':
+        linkerType = 'msvc'
+
+    return linkerType
 
 def _generateIncludes(
     _context,
