@@ -20,17 +20,33 @@ class TestConfigure( unittest.TestCase ):
             context.env.taf[ 'BUILD' ],
         )
 
-    def test_buildUserBuild(
+    def test_buildFromOption(
         _self,
     ):
         context = _DummyContext()
 
-        context.options.build = 'debug'
+        taf.BUILD = 'release'
+
+        context.options.build = None
 
         configure( context )
 
         _self.assertEqual(
-            'debug',
+            'release',
+            context.env.taf[ 'BUILD' ],
+        )
+
+    def test_buildFromOption(
+        _self,
+    ):
+        context = _DummyContext()
+
+        context.options.build = 'release'
+
+        configure( context )
+
+        _self.assertEqual(
+            'release',
             context.env.taf[ 'BUILD' ],
         )
 
