@@ -313,10 +313,104 @@ class TestConfigure( unittest.TestCase ):
             context.env.DEFINES,
         )
 
-    #TODO test_linkflagsLdDebug
-    #TODO test_linkflagsLdRelease
-    #TODO test_linkflagsMsvcDebug
-    #TODO test_linkflagsMsvcRelease
+    def test_linkflagsLdDebug(
+        _self,
+    ):
+        context = _DummyContext()
+
+        context.env.taf = {
+            'BUILD_TYPE' : 'debug',
+        }
+
+        context.options.linkertype = 'ld'
+
+        context.options.compilertype = None
+        context.options.include = None
+
+        configure( context )
+
+        _self.assertEqual(
+            [
+                '-pthread',
+            ],
+            context.env.LINKFLAGS,
+        )
+
+    def test_linkflagsLdRelease(
+        _self,
+    ):
+        context = _DummyContext()
+
+        context.env.taf = {
+            'BUILD_TYPE' : 'release',
+        }
+
+        context.options.linkertype = 'ld'
+
+        context.options.compilertype = None
+        context.options.include = None
+
+        configure( context )
+
+        _self.assertEqual(
+            [
+                '-pthread',
+            ],
+            context.env.LINKFLAGS,
+        )
+
+    def test_linkflagsMsvcDebug(
+        _self,
+    ):
+        context = _DummyContext()
+
+        context.env.taf = {
+            'BUILD_TYPE' : 'debug',
+        }
+
+        context.options.linkertype = 'msvc'
+
+        context.options.compilertype = None
+        context.options.include = None
+
+        configure( context )
+
+        _self.assertEqual(
+            [
+                '/NOLOGO',
+                '/DYNAMICBASE',
+                '/NXCOMPAT',
+            ],
+            context.env.LINKFLAGS,
+        )
+
+    def test_linkflagsMsvcRelease(
+        _self,
+    ):
+        context = _DummyContext()
+
+        context.env.taf = {
+            'BUILD_TYPE' : 'release',
+        }
+
+        context.options.linkertype = 'msvc'
+
+        context.options.compilertype = None
+        context.options.include = None
+
+        configure( context )
+
+        _self.assertEqual(
+            [
+                '/NOLOGO',
+                '/DYNAMICBASE',
+                '/NXCOMPAT',
+                '/OPT:REF',
+                '/OPT:ICF',
+                '/LTCG',
+            ],
+            context.env.LINKFLAGS,
+        )
 
 class _DummyOptions:
     def __setattr__(
