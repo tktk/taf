@@ -50,6 +50,13 @@ class TestConfigure( unittest.TestCase ):
             context.env.INCLUDES,
         )
 
+    #TODO test_cxxflagsDebug
+    #TODO test_cxxflagsRelease
+    #TODO test_definesDebug
+    #TODO test_definesRelease
+    #TODO test_linkflagsDebug
+    #TODO test_linkflagsRelease
+
 class _DummyOptions:
     def __setattr__(
         _self,

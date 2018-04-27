@@ -6,8 +6,28 @@ from taf.tools import cpp
 import unittest
 
 class TestOptions( unittest.TestCase ):
-    #TODO test_defines
-    #TODO test_linkflags
+    def test_compilertype(
+        _self,
+    ):
+        context = _DummyContext()
+
+        options( context )
+
+        OPTION = _findOption(
+            context,
+            'include',
+        )
+
+        _self.assertEqual(
+            _DummyOption(
+                '--compilertype',
+                'store',
+                None,
+            ),
+            OPTION,
+        )
+
+    #TODO test_linkertype
 
     def test_includes(
         _self,
