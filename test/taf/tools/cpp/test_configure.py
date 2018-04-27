@@ -58,13 +58,13 @@ class TestConfigure( unittest.TestCase ):
             'BUILD' : 'debug',
         }
 
-        context.options.compilertype = None
-        context.options.linkertype = None
-
         context.options.include = [
             'includedir1',
             'includedir2',
         ]
+
+        context.options.compilertype = None
+        context.options.linkertype = None
 
         configure( context )
 
@@ -86,15 +86,15 @@ class TestConfigure( unittest.TestCase ):
             'BUILD' : 'debug',
         }
 
-        context.options.compilertype = None
-        context.options.linkertype = None
-
         context.options.include = [
             'includedir1',
             'includedir2',
         ]
 
         cpp.HEADER_DIR = 'userinc'
+
+        context.options.compilertype = None
+        context.options.linkertype = None
 
         configure( context )
 
@@ -105,6 +105,33 @@ class TestConfigure( unittest.TestCase ):
                 'includedir2',
             ],
             context.env.INCLUDES,
+        )
+
+    def test_testlibpath(
+        _self,
+    ):
+        context = _DummyContext()
+
+        context.env.taf = {
+            'BUILD' : 'debug',
+        }
+
+        context.options.testlibpath = None
+
+        context.options.compilertype = None
+        context.options.linkertype = None
+        context.options.include = None
+
+        configure( context )
+
+        _self.assertIs(
+            None,
+            context.env.LIBPATH_TEST,
+        )
+
+        _self.assertIs(
+            None,
+            context.env.RPATH_TEST,
         )
 
     def test_cxxflagsGccDebug(
