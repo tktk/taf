@@ -69,36 +69,6 @@ class TestOptions( unittest.TestCase ):
             OPTION,
         )
 
-    #REMOVEME
-    def test_includesUserIncludes(
-        _self,
-    ):
-        context = _DummyContext()
-
-        cpp.INCLUDES = [
-            'inc1',
-            'inc2',
-        ]
-
-        options( context )
-
-        OPTION = _findOption(
-            context,
-            'include',
-        )
-
-        _self.assertEqual(
-            _DummyOption(
-                '--include',
-                'append',
-                [
-                    'inc1',
-                    'inc2',
-                ],
-            ),
-            OPTION,
-        )
-
     def test_testlibpath(
         _self,
     ):
