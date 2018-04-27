@@ -98,12 +98,43 @@ class TestConfigure( unittest.TestCase ):
             context.env.INCLUDES,
         )
 
-    #TODO test_cxxflagsDebug
-    #TODO test_cxxflagsRelease
-    #TODO test_definesDebug
-    #TODO test_definesRelease
-    #TODO test_linkflagsDebug
-    #TODO test_linkflagsRelease
+    def test_cxxflagsGccDebug(
+        _self,
+    ):
+        context = _DummyContext()
+
+        context.env.taf = {}
+
+        context.options.compilertype = 'gcc'
+
+        context.options.linkertype = None
+        context.options.include = None
+
+        configure( context )
+
+        _self.assertEqual(
+            [
+                '-Wall',
+                '-fno-rtti',
+                '-fvisibility=hidden',
+                '-std=c++14',
+                '-O0',
+                '-g',
+            ],
+            context.env.CXXFLAGS,
+        )
+
+    #TODO test_cxxflagsGccRelease
+    #TODO test_cxxflagsMsvcDebug
+    #TODO test_cxxflagsMsvcRelease
+    #TODO test_definesGccDebug
+    #TODO test_definesGccRelease
+    #TODO test_definesMsvcDebug
+    #TODO test_definesMsvcRelease
+    #TODO test_linkflagsLdDebug
+    #TODO test_linkflagsLdRelease
+    #TODO test_linkflagsMsvcDebug
+    #TODO test_linkflagsMsvcRelease
 
 class _DummyOptions:
     def __setattr__(
