@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from . import common
+from . import taf
 from . import module
 
 def configure(
@@ -16,14 +17,17 @@ def configure(
 def _getBuild(
     _context,
 ):
-    BUILD = _context.options.build
+    build = _context.options.build
+
+    if build is None:
+        build = taf.BUILD
 
     _context.msg(
         'build',
-        BUILD,
+        build,
     )
 
-    return BUILD
+    return build
 
 def _generateBuildModules(
     _context,
