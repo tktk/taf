@@ -16,6 +16,10 @@ def configure(
     _context.env.DEFINES = _generateDefines( _context )
     _context.env.LINKFLAGS = _generateLinkflags( _context )
 
+    TEST_LIBPATH = _generateTestlibpath( _context )
+    _context.env.LIBPATH_TEST = TEST_LIBPATH
+    _context.env.RPATH_TEST = TEST_LIBPATH
+
 def _getCompilerType(
     _context,
 ):
@@ -219,3 +223,13 @@ def _generateLinkflagsMsvc(
         linkflags = getLinkflagsMsvcRelease()
 
     return linkflags
+
+def _generateTestlibpath(
+    _context,
+):
+    libpath = _context.options.testlibpath
+
+    if libpath is None:
+        libpath = getTestlibpath()
+
+    return libpath

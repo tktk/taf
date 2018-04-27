@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 
-INCLUDES = None
-
 SOURCE_DIR = 'src'
 HEADER_DIR = 'inc'
+
+INCLUDES = None
+
+TEST_LIBPATH = None
 
 CXXFLAGS_GCC_COMMON_DEFAULT = [
     '-Wall',
@@ -105,10 +107,6 @@ LINKFLAGS_MSVC_RELEASE_DEFAULT = [
 LINKFLAGS_MSVC_DEBUG = LINKFLAGS_MSVC_COMMON_DEFAULT + LINKFLAGS_MSVC_DEBUG_DEFAULT
 LINKFLAGS_MSVC_RELEASE = LINKFLAGS_MSVC_COMMON_DEFAULT + LINKFLAGS_MSVC_RELEASE_DEFAULT
 
-def getIncludes(
-):
-    return INCLUDES
-
 def getSourceDir(
 ):
     return SOURCE_DIR
@@ -116,6 +114,14 @@ def getSourceDir(
 def getHeaderDir(
 ):
     return HEADER_DIR
+
+def getIncludes(
+):
+    return INCLUDES
+
+def getTestlibpath(
+):
+    return TEST_LIBPATH
 
 def getCxxflagsGccDebug(
 ):
