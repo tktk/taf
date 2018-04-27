@@ -6,8 +6,21 @@ from taf import taf
 import unittest
 
 class TestConfigure( unittest.TestCase ):
-    #TODO 初期値の場合のテストを追加する
     def test_build(
+        _self,
+    ):
+        context = _DummyContext()
+
+        context.options.build = None
+
+        configure( context )
+
+        _self.assertEqual(
+            'debug',
+            context.env.taf[ 'BUILD' ],
+        )
+
+    def test_buildUserBuild(
         _self,
     ):
         context = _DummyContext()
