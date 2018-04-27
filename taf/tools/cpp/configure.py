@@ -9,10 +9,11 @@ def configure(
 ):
     _context.load( 'compiler_cxx' )
 
-    _context.env.taf[ 'COMPILER_TYPE' ] = _getCompilerType( _context )  #REMOVEME
-    _context.env.taf[ 'LINKER_TYPE' ] = _getLinkerType( _context )  #REMOVEME
+    _context.env.taf[ 'COMPILER_TYPE' ] = _getCompilerType( _context )
+    _context.env.taf[ 'LINKER_TYPE' ] = _getLinkerType( _context )
     _context.env.INCLUDES = _generateIncludes( _context )
     _context.env.CXXFLAGS = _generateCxxflags( _context )
+    _context.env.DEFINES = _generateDefines( _context )
 
 def _getCompilerType(
     _context,
@@ -114,3 +115,42 @@ def _generateCxxflagsMsvc(
         cxxflags = getCxxflagsMsvcRelease()
 
     return cxxflags
+
+def _generateDefines(
+    _context,
+):
+    defines = None
+
+    COMPILER_TYPE = _context.env.taf[ 'COMPILER_TYPE' ]
+    if COMPILER_TYPE == 'gcc':
+        defines = _generateDefinesGcc( _context )
+    elif COMPILER_TYPE == 'msvc':
+        defines = _generateDefinesMsvc( _context )
+
+    return defines
+
+def _generateDefinesGcc(
+    _context,
+):
+    defines = None
+
+    BUILD_TYPE = _context.env.taf[ 'BUILD_TYPE' ]
+    if BUILD_TYPE == 'debug':
+        defines = getDefinesGccDebug()
+    elif BUILD_TYPE == 'release':
+        defines = getDefinesGccRelease()
+
+    return defines
+
+def _generateDefinesMsvc(
+    _context,
+):
+    defines = None
+
+    BUILD_TYPE = _context.env.taf[ 'BUILD_TYPE' ]
+    if BUILD_TYPE == 'debug':
+        defines = getDefinesMsvcDebug()
+    elif BUILD_TYPE == 'release':
+        defines = getDefinesMsvcRelease()
+
+    return defines
