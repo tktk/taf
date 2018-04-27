@@ -5,13 +5,13 @@ from . import *
 def configure(
     _context,
 ):
+    _context.load( 'compiler_cxx' )
+
     _context.env.INCLUDES = _generateIncludes( _context )
 
 def _generateIncludes(
     _context,
 ):
-    _context.load( 'compiler_cxx' )
-
     includes = []
 
     includes.append( getHeaderDir() )

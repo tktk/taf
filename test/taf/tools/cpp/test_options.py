@@ -27,7 +27,26 @@ class TestOptions( unittest.TestCase ):
             OPTION,
         )
 
-    #TODO test_linkertype
+    def test_linkertype(
+        _self,
+    ):
+        context = _DummyContext()
+
+        options( context )
+
+        OPTION = _findOption(
+            context,
+            'linkertype',
+        )
+
+        _self.assertEqual(
+            _DummyOption(
+                '--linkertype',
+                'store',
+                None,
+            ),
+            OPTION,
+        )
 
     def test_includes(
         _self,
