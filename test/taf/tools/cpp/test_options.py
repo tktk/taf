@@ -15,7 +15,7 @@ class TestOptions( unittest.TestCase ):
 
         OPTION = _findOption(
             context,
-            'include',
+            'compilertype',
         )
 
         _self.assertEqual(
