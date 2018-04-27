@@ -84,6 +84,8 @@ def _generateCxxflags(
     COMPILER_TYPE = _context.env.taf[ 'COMPILER_TYPE' ]
     if COMPILER_TYPE == 'gcc':
         cxxflags = _generateCxxflagsGcc( _context )
+    elif COMPILER_TYPE == 'msvc':
+        cxxflags = _generateCxxflagsMsvc( _context )
 
     return cxxflags
 
@@ -97,5 +99,18 @@ def _generateCxxflagsGcc(
         cxxflags = getCxxflagsGccDebug()
     elif BUILD_TYPE == 'release':
         cxxflags = getCxxflagsGccRelease()
+
+    return cxxflags
+
+def _generateCxxflagsMsvc(
+    _context,
+):
+    cxxflags = None
+
+    BUILD_TYPE = _context.env.taf[ 'BUILD_TYPE' ]
+    if BUILD_TYPE == 'debug':
+        cxxflags = getCxxflagsMsvcDebug()
+    #elif BUILD_TYPE == 'release':
+    #    cxxflags = getCxxflagsMsvcRelease()
 
     return cxxflags
