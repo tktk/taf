@@ -20,7 +20,7 @@ class TestConfigure( unittest.TestCase ):
             context.env.taf[ 'BUILD' ],
         )
 
-    def test_buildFromOption(
+    def test_buildUserBuild(
         _self,
     ):
         context = _DummyContext()

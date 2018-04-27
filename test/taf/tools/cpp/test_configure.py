@@ -50,8 +50,62 @@ class TestConfigure( unittest.TestCase ):
             context.env.taf[ 'LINKER_TYPE' ],
         )
 
-    #TODO 初期値の場合のテストを追加する
     def test_includes(
+        _self,
+    ):
+        context = _DummyContext()
+
+        context.env.taf = {
+            'BUILD' : 'debug',
+        }
+
+        context.options.include = None
+
+        context.options.compilertype = None
+        context.options.linkertype = None
+        context.options.testlibpath = None
+
+        configure( context )
+
+        _self.assertEqual(
+            [
+                cpp.HEADER_DIR,
+            ],
+            context.env.INCLUDES,
+        )
+
+    def test_includesUserIncludes(
+        _self,
+    ):
+        context = _DummyContext()
+
+        context.env.taf = {
+            'BUILD' : 'debug',
+        }
+
+        cpp.INCLUDES = [
+            'includedir1',
+            'includedir2',
+        ]
+
+        context.options.include = None
+
+        context.options.compilertype = None
+        context.options.linkertype = None
+        context.options.testlibpath = None
+
+        configure( context )
+
+        _self.assertEqual(
+            [
+                cpp.HEADER_DIR,
+                'includedir1',
+                'includedir2',
+            ],
+            context.env.INCLUDES,
+        )
+
+    def test_includesFromOption(
         _self,
     ):
         context = _DummyContext()
