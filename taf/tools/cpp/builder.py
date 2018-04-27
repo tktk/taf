@@ -61,7 +61,7 @@ def gtest(
         _TARGET,
         _SOURCE,
         _LIB + [ 'gtest' ],
-        _USE,
+        _USE + [ 'TEST' ],
     )
 
 def _build(
