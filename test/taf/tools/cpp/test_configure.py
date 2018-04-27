@@ -15,6 +15,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.compilertype = None
 
+        context.options.linkertype = None
         context.options.include = None
 
         configure( context )
@@ -24,7 +25,24 @@ class TestConfigure( unittest.TestCase ):
             context.env.taf[ 'COMPILER_TYPE' ],
         )
 
-    #TODO test_linkerTypeForLinux
+    def test_linkerTypeForLinux(
+        _self,
+    ):
+        context = _DummyContext()
+
+        context.env.taf = {}
+
+        context.options.linkertype = None
+
+        context.options.compilertype = None
+        context.options.include = None
+
+        configure( context )
+
+        _self.assertEqual(
+            'ld',
+            context.env.taf[ 'LINKER_TYPE' ],
+        )
 
     def test_includes(
         _self,
@@ -34,6 +52,7 @@ class TestConfigure( unittest.TestCase ):
         context.env.taf = {}
 
         context.options.compilertype = None
+        context.options.linkertype = None
 
         context.options.include = [
             'includedir1',
@@ -59,6 +78,7 @@ class TestConfigure( unittest.TestCase ):
         context.env.taf = {}
 
         context.options.compilertype = None
+        context.options.linkertype = None
 
         context.options.include = [
             'includedir1',
