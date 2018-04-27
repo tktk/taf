@@ -12,7 +12,7 @@ class TestConfigure( unittest.TestCase ):
         context = _DummyContext()
 
         context.env.taf = {
-            'BUILD_TYPE' : 'debug',
+            'BUILD' : 'debug',
         }
 
         context.options.compilertype = None
@@ -33,7 +33,7 @@ class TestConfigure( unittest.TestCase ):
         context = _DummyContext()
 
         context.env.taf = {
-            'BUILD_TYPE' : 'debug',
+            'BUILD' : 'debug',
         }
 
         context.options.linkertype = None
@@ -54,7 +54,7 @@ class TestConfigure( unittest.TestCase ):
         context = _DummyContext()
 
         context.env.taf = {
-            'BUILD_TYPE' : 'debug',
+            'BUILD' : 'debug',
         }
 
         context.options.compilertype = None
@@ -82,7 +82,7 @@ class TestConfigure( unittest.TestCase ):
         context = _DummyContext()
 
         context.env.taf = {
-            'BUILD_TYPE' : 'debug',
+            'BUILD' : 'debug',
         }
 
         context.options.compilertype = None
@@ -112,7 +112,7 @@ class TestConfigure( unittest.TestCase ):
         context = _DummyContext()
 
         context.env.taf = {
-            'BUILD_TYPE' : 'debug',
+            'BUILD' : 'debug',
         }
 
         context.options.compilertype = 'gcc'
@@ -140,7 +140,7 @@ class TestConfigure( unittest.TestCase ):
         context = _DummyContext()
 
         context.env.taf = {
-            'BUILD_TYPE' : 'release',
+            'BUILD' : 'release',
         }
 
         context.options.compilertype = 'gcc'
@@ -167,7 +167,7 @@ class TestConfigure( unittest.TestCase ):
         context = _DummyContext()
 
         context.env.taf = {
-            'BUILD_TYPE' : 'debug',
+            'BUILD' : 'debug',
         }
 
         context.options.compilertype = 'msvc'
@@ -195,7 +195,7 @@ class TestConfigure( unittest.TestCase ):
         context = _DummyContext()
 
         context.env.taf = {
-            'BUILD_TYPE' : 'release',
+            'BUILD' : 'release',
         }
 
         context.options.compilertype = 'msvc'
@@ -225,7 +225,7 @@ class TestConfigure( unittest.TestCase ):
         context = _DummyContext()
 
         context.env.taf = {
-            'BUILD_TYPE' : 'debug',
+            'BUILD' : 'debug',
         }
 
         context.options.compilertype = 'gcc'
@@ -249,7 +249,7 @@ class TestConfigure( unittest.TestCase ):
         context = _DummyContext()
 
         context.env.taf = {
-            'BUILD_TYPE' : 'release',
+            'BUILD' : 'release',
         }
 
         context.options.compilertype = 'gcc'
@@ -272,7 +272,7 @@ class TestConfigure( unittest.TestCase ):
         context = _DummyContext()
 
         context.env.taf = {
-            'BUILD_TYPE' : 'debug',
+            'BUILD' : 'debug',
         }
 
         context.options.compilertype = 'msvc'
@@ -296,7 +296,7 @@ class TestConfigure( unittest.TestCase ):
         context = _DummyContext()
 
         context.env.taf = {
-            'BUILD_TYPE' : 'release',
+            'BUILD' : 'release',
         }
 
         context.options.compilertype = 'msvc'
@@ -319,7 +319,7 @@ class TestConfigure( unittest.TestCase ):
         context = _DummyContext()
 
         context.env.taf = {
-            'BUILD_TYPE' : 'debug',
+            'BUILD' : 'debug',
         }
 
         context.options.linkertype = 'ld'
@@ -342,7 +342,7 @@ class TestConfigure( unittest.TestCase ):
         context = _DummyContext()
 
         context.env.taf = {
-            'BUILD_TYPE' : 'release',
+            'BUILD' : 'release',
         }
 
         context.options.linkertype = 'ld'
@@ -365,7 +365,7 @@ class TestConfigure( unittest.TestCase ):
         context = _DummyContext()
 
         context.env.taf = {
-            'BUILD_TYPE' : 'debug',
+            'BUILD' : 'debug',
         }
 
         context.options.linkertype = 'msvc'
@@ -390,7 +390,7 @@ class TestConfigure( unittest.TestCase ):
         context = _DummyContext()
 
         context.env.taf = {
-            'BUILD_TYPE' : 'release',
+            'BUILD' : 'release',
         }
 
         context.options.linkertype = 'msvc'

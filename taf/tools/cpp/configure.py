@@ -24,6 +24,11 @@ def _getCompilerType(
     if compilerType is None:
         compilerType = _getDefaultCompilerType()
 
+    _context.msg(
+        'compiler type',
+        compilerType,
+    )
+
     return compilerType
 
 def _getDefaultCompilerType(
@@ -45,6 +50,11 @@ def _getLinkerType(
 
     if linkerType is None:
         linkerType = _getDefaultLinkerType()
+
+    _context.msg(
+        'linker type',
+        linkerType,
+    )
 
     return linkerType
 
@@ -89,6 +99,11 @@ def _generateCxxflags(
     elif COMPILER_TYPE == 'msvc':
         cxxflags = _generateCxxflagsMsvc( _context )
 
+    _context.msg(
+        'cxxflags',
+        cxxflags,
+    )
+
     return cxxflags
 
 def _generateCxxflagsGcc(
@@ -96,10 +111,10 @@ def _generateCxxflagsGcc(
 ):
     cxxflags = None
 
-    BUILD_TYPE = _context.env.taf[ 'BUILD_TYPE' ]
-    if BUILD_TYPE == 'debug':
+    BUILD = _context.env.taf[ 'BUILD' ]
+    if BUILD == 'debug':
         cxxflags = getCxxflagsGccDebug()
-    elif BUILD_TYPE == 'release':
+    elif BUILD == 'release':
         cxxflags = getCxxflagsGccRelease()
 
     return cxxflags
@@ -109,10 +124,10 @@ def _generateCxxflagsMsvc(
 ):
     cxxflags = None
 
-    BUILD_TYPE = _context.env.taf[ 'BUILD_TYPE' ]
-    if BUILD_TYPE == 'debug':
+    BUILD = _context.env.taf[ 'BUILD' ]
+    if BUILD == 'debug':
         cxxflags = getCxxflagsMsvcDebug()
-    elif BUILD_TYPE == 'release':
+    elif BUILD == 'release':
         cxxflags = getCxxflagsMsvcRelease()
 
     return cxxflags
@@ -128,6 +143,11 @@ def _generateDefines(
     elif COMPILER_TYPE == 'msvc':
         defines = _generateDefinesMsvc( _context )
 
+    _context.msg(
+        'defines',
+        defines,
+    )
+
     return defines
 
 def _generateDefinesGcc(
@@ -135,10 +155,10 @@ def _generateDefinesGcc(
 ):
     defines = None
 
-    BUILD_TYPE = _context.env.taf[ 'BUILD_TYPE' ]
-    if BUILD_TYPE == 'debug':
+    BUILD = _context.env.taf[ 'BUILD' ]
+    if BUILD == 'debug':
         defines = getDefinesGccDebug()
-    elif BUILD_TYPE == 'release':
+    elif BUILD == 'release':
         defines = getDefinesGccRelease()
 
     return defines
@@ -148,10 +168,10 @@ def _generateDefinesMsvc(
 ):
     defines = None
 
-    BUILD_TYPE = _context.env.taf[ 'BUILD_TYPE' ]
-    if BUILD_TYPE == 'debug':
+    BUILD = _context.env.taf[ 'BUILD' ]
+    if BUILD == 'debug':
         defines = getDefinesMsvcDebug()
-    elif BUILD_TYPE == 'release':
+    elif BUILD == 'release':
         defines = getDefinesMsvcRelease()
 
     return defines
@@ -167,6 +187,11 @@ def _generateLinkflags(
     elif LINKER_TYPE == 'msvc':
         linkflags = _generateLinkflagsMsvc( _context )
 
+    _context.msg(
+        'linkflags',
+        linkflags,
+    )
+
     return linkflags
 
 def _generateLinkflagsLd(
@@ -174,10 +199,10 @@ def _generateLinkflagsLd(
 ):
     linkflags = None
 
-    BUILD_TYPE = _context.env.taf[ 'BUILD_TYPE' ]
-    if BUILD_TYPE == 'debug':
+    BUILD = _context.env.taf[ 'BUILD' ]
+    if BUILD == 'debug':
         linkflags = getLinkflagsLdDebug()
-    elif BUILD_TYPE == 'release':
+    elif BUILD == 'release':
         linkflags = getLinkflagsLdRelease()
 
     return linkflags
@@ -187,10 +212,10 @@ def _generateLinkflagsMsvc(
 ):
     linkflags = None
 
-    BUILD_TYPE = _context.env.taf[ 'BUILD_TYPE' ]
-    if BUILD_TYPE == 'debug':
+    BUILD = _context.env.taf[ 'BUILD' ]
+    if BUILD == 'debug':
         linkflags = getLinkflagsMsvcDebug()
-    elif BUILD_TYPE == 'release':
+    elif BUILD == 'release':
         linkflags = getLinkflagsMsvcRelease()
 
     return linkflags
