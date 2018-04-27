@@ -19,7 +19,7 @@ def _addBuildOptions(
     _context.add_option(
         optionKey( 'build' ),
         action = 'store',
-        default = taf.BUILD,
+        default = None,
     )
 
 def _addModuleOptions(
