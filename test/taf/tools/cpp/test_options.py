@@ -98,8 +98,55 @@ class TestOptions( unittest.TestCase ):
             OPTION,
         )
 
-    #TODO test_libpath
-    #TODO test_testlibpath
+    def test_testlibpath(
+        _self,
+    ):
+        context = _DummyContext()
+
+        options( context )
+
+        OPTION = _findOption(
+            context,
+            'testlibpath',
+        )
+
+        _self.assertEqual(
+            _DummyOption(
+                '--testlibpath',
+                'append',
+                None,
+            ),
+            OPTION,
+        )
+
+    def test_includesUserIncludes(
+        _self,
+    ):
+        context = _DummyContext()
+
+        cpp.INCLUDES = [
+            'inc1',
+            'inc2',
+        ]
+
+        options( context )
+
+        OPTION = _findOption(
+            context,
+            'include',
+        )
+
+        _self.assertEqual(
+            _DummyOption(
+                '--include',
+                'append',
+                [
+                    'inc1',
+                    'inc2',
+                ],
+            ),
+            OPTION,
+        )
 
 class _DummyContext:
     def __init__(
