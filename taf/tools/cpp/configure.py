@@ -7,8 +7,6 @@ from waflib import Utils
 def configure(
     _context,
 ):
-    _context.load( 'compiler_cxx' )
-
     _context.env.taf[ 'COMPILER_TYPE' ] = _getCompilerType( _context )
     _context.env.taf[ 'LINKER_TYPE' ] = _getLinkerType( _context )
     _context.env.INCLUDES = _generateIncludes( _context )

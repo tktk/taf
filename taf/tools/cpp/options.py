@@ -5,8 +5,6 @@ from ...options import optionKey
 def options(
     _context,
 ):
-    _context.load( 'compiler_cxx' )
-
     _addCompilerTypeOption( _context )
     _addLinkerTypeOption( _context )
     _addIncludesOption( _context )
