@@ -11,13 +11,17 @@ class TestConfigure( unittest.TestCase ):
     ):
         context = _DummyContext()
 
+        context.env.taf = {}
+
         context.options.compilertype = None
+
+        context.options.include = None
 
         configure( context )
 
         _self.assertEqual(
             'gcc',
-            context.env.taf[ 'cOMPILER_TYPE' ],
+            context.env.taf[ 'COMPILER_TYPE' ],
         )
 
     #TODO test_linkerTypeForLinux
@@ -26,6 +30,10 @@ class TestConfigure( unittest.TestCase ):
         _self,
     ):
         context = _DummyContext()
+
+        context.env.taf = {}
+
+        context.options.compilertype = None
 
         context.options.include = [
             'includedir1',
@@ -47,6 +55,10 @@ class TestConfigure( unittest.TestCase ):
         _self,
     ):
         context = _DummyContext()
+
+        context.env.taf = {}
+
+        context.options.compilertype = None
 
         context.options.include = [
             'includedir1',
