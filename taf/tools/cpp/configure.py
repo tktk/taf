@@ -95,5 +95,7 @@ def _generateCxxflagsGcc(
     BUILD_TYPE = _context.env.taf[ 'BUILD_TYPE' ]
     if BUILD_TYPE == 'debug':
         cxxflags = getCxxflagsGccDebug()
+    elif BUILD_TYPE == 'release':
+        cxxflags = getCxxflagsGccRelease()
 
     return cxxflags

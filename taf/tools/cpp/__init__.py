@@ -17,7 +17,12 @@ CXXFLAGS_GCC_DEBUG_DEFAULT = [
     '-g'
 ]
 
+CXXFLAGS_GCC_RELEASE_DEFAULT = [
+    '-O2',
+]
+
 CXXFLAGS_GCC_DEBUG = CXXFLAGS_GCC_COMMON_DEFAULT + CXXFLAGS_GCC_DEBUG_DEFAULT
+CXXFLAGS_GCC_RELEASE = CXXFLAGS_GCC_COMMON_DEFAULT + CXXFLAGS_GCC_RELEASE_DEFAULT
 
 def getIncludes(
 ):
@@ -34,6 +39,10 @@ def getHeaderDir(
 def getCxxflagsGccDebug(
 ):
     return CXXFLAGS_GCC_DEBUG
+
+def getCxxflagsGccRelease(
+):
+    return CXXFLAGS_GCC_RELEASE
 
 from .options import options
 from .configure import configure
