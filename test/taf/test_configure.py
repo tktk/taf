@@ -6,6 +6,7 @@ from taf import taf
 import unittest
 
 class TestConfigure( unittest.TestCase ):
+    #TODO 初期値の場合のテストを追加する
     def test_build(
         _self,
     ):

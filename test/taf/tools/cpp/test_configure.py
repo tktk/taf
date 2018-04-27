@@ -48,6 +48,7 @@ class TestConfigure( unittest.TestCase ):
             context.env.taf[ 'LINKER_TYPE' ],
         )
 
+    #TODO 初期値の場合のテストを追加する
     def test_includes(
         _self,
     ):

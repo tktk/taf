@@ -6,6 +6,7 @@ from taf import taf
 import unittest
 
 class TestOptions( unittest.TestCase ):
+    #TODO 初期値をNoneにする
     def test_build(
         _self,
     ):
