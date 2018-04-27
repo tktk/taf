@@ -81,9 +81,12 @@ def _generateIncludes(
 
     includes.append( getHeaderDir() )
 
-    INCLUDE_OPTION = _context.options.include
-    if INCLUDE_OPTION is not None:
-        includes.extend( INCLUDE_OPTION )
+    includeOption = _context.options.include
+    if includeOption is None:
+        includeOption = getIncludes()
+
+    if includeOption is not None:
+        includes.extend( includeOption )
 
     _context.msg(
         'includes',
