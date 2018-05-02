@@ -5,7 +5,7 @@ BUILDER = None
 TARGET = None
 SOURCE = None
 LIB = None
-USE = []
+USE = None
 
 def initialize(
 ):
@@ -21,4 +21,4 @@ def initialize(
     TARGET = None
     SOURCE = None
     LIB = None
-    USE = []
+    USE = None
