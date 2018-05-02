@@ -69,6 +69,27 @@ class TestOptions( unittest.TestCase ):
             OPTION,
         )
 
+    def test_testincludes(
+        _self,
+    ):
+        context = _DummyContext()
+
+        options( context )
+
+        OPTION = _findOption(
+            context,
+            'testinclude',
+        )
+
+        _self.assertEqual(
+            _DummyOption(
+                '--testinclude',
+                'append',
+                None,
+            ),
+            OPTION,
+        )
+
     def test_testlibpath(
         _self,
     ):
