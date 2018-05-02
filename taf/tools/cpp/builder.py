@@ -84,5 +84,5 @@ def _build(
             '.cpp',
         ),
         lib = _LIB if _LIB is not None else [],
-        use = _USE,
+        use = _USE if _USE is not None else [],
     )
