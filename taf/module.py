@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 
+from . import taf
+
+import importlib
+
 DEPENDS = None
 BUILDER = None
 TARGET = None
@@ -22,3 +26,12 @@ def initialize(
     SOURCE = None
     LIB = None
     USE = None
+
+def importModule(
+    _moduleName,
+):
+    #TODO
+    pass
+#    initialize()
+#
+#    importlib.import_module( taf.TSCRIPTS_DIR + '.' + _moduleName )
