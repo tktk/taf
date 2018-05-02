@@ -19,6 +19,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.linkertype = None
         context.options.include = None
+        context.options.testinclude = None
         context.options.testlibpath = None
 
         configure( context )
@@ -41,6 +42,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.compilertype = None
         context.options.include = None
+        context.options.testinclude = None
         context.options.testlibpath = None
 
         configure( context )
@@ -63,6 +65,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.compilertype = None
         context.options.linkertype = None
+        context.options.testinclude = None
         context.options.testlibpath = None
 
         configure( context )
@@ -92,6 +95,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.compilertype = None
         context.options.linkertype = None
+        context.options.testinclude = None
         context.options.testlibpath = None
 
         configure( context )
@@ -121,6 +125,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.compilertype = None
         context.options.linkertype = None
+        context.options.testinclude = None
         context.options.testlibpath = None
 
         configure( context )
@@ -152,6 +157,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.compilertype = None
         context.options.linkertype = None
+        context.options.testinclude = None
         context.options.testlibpath = None
 
         configure( context )
@@ -163,6 +169,89 @@ class TestConfigure( unittest.TestCase ):
                 'includedir2',
             ],
             context.env.INCLUDES,
+        )
+
+    def test_testincludes(
+        _self,
+    ):
+        context = _DummyContext()
+
+        context.env.taf = {
+            'BUILD' : 'debug',
+        }
+
+        context.options.testinclude = None
+
+        context.options.compilertype = None
+        context.options.linkertype = None
+        context.options.include = None
+        context.options.testlibpath = None
+
+        configure( context )
+
+        _self.assertIs(
+            None,
+            context.env.INCLUDES_TEST,
+        )
+
+    def test_testincludesUserTestincludes(
+        _self,
+    ):
+        context = _DummyContext()
+
+        context.env.taf = {
+            'BUILD' : 'debug',
+        }
+
+        cpp.TEST_INCLUDES = [
+            'includedir1',
+            'includedir2',
+        ]
+
+        context.options.testinclude = None
+
+        context.options.compilertype = None
+        context.options.linkertype = None
+        context.options.include = None
+        context.options.testlibpath = None
+
+        configure( context )
+
+        _self.assertEqual(
+            [
+                'includedir1',
+                'includedir2',
+            ],
+            context.env.INCLUDES_TEST,
+        )
+
+    def test_testincludesFromOption(
+        _self,
+    ):
+        context = _DummyContext()
+
+        context.env.taf = {
+            'BUILD' : 'debug',
+        }
+
+        context.options.testinclude = [
+            'includedir1',
+            'includedir2',
+        ]
+
+        context.options.compilertype = None
+        context.options.linkertype = None
+        context.options.include = None
+        context.options.testlibpath = None
+
+        configure( context )
+
+        _self.assertEqual(
+            [
+                'includedir1',
+                'includedir2',
+            ],
+            context.env.INCLUDES_TEST,
         )
 
     def test_testlibpath(
@@ -179,6 +268,7 @@ class TestConfigure( unittest.TestCase ):
         context.options.compilertype = None
         context.options.linkertype = None
         context.options.include = None
+        context.options.testinclude = None
 
         configure( context )
 
@@ -191,6 +281,9 @@ class TestConfigure( unittest.TestCase ):
             None,
             context.env.RPATH_TEST,
         )
+
+    #TODO test_testlibpathUserTestlibpath
+    #TODO test_testlibpathFromOption
 
     def test_cxxflagsGccDebug(
         _self,
@@ -205,6 +298,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.linkertype = None
         context.options.include = None
+        context.options.testinclude = None
         context.options.testlibpath = None
 
         configure( context )
@@ -234,6 +328,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.linkertype = None
         context.options.include = None
+        context.options.testinclude = None
         context.options.testlibpath = None
 
         configure( context )
@@ -262,6 +357,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.linkertype = None
         context.options.include = None
+        context.options.testinclude = None
         context.options.testlibpath = None
 
         configure( context )
@@ -291,6 +387,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.linkertype = None
         context.options.include = None
+        context.options.testinclude = None
         context.options.testlibpath = None
 
         configure( context )
@@ -322,6 +419,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.linkertype = None
         context.options.include = None
+        context.options.testinclude = None
         context.options.testlibpath = None
 
         configure( context )
@@ -347,6 +445,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.linkertype = None
         context.options.include = None
+        context.options.testinclude = None
         context.options.testlibpath = None
 
         configure( context )
@@ -371,6 +470,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.linkertype = None
         context.options.include = None
+        context.options.testinclude = None
         context.options.testlibpath = None
 
         configure( context )
@@ -396,6 +496,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.linkertype = None
         context.options.include = None
+        context.options.testinclude = None
         context.options.testlibpath = None
 
         configure( context )
@@ -420,6 +521,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.compilertype = None
         context.options.include = None
+        context.options.testinclude = None
         context.options.testlibpath = None
 
         configure( context )
@@ -444,6 +546,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.compilertype = None
         context.options.include = None
+        context.options.testinclude = None
         context.options.testlibpath = None
 
         configure( context )
@@ -468,6 +571,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.compilertype = None
         context.options.include = None
+        context.options.testinclude = None
         context.options.testlibpath = None
 
         configure( context )
@@ -494,6 +598,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.compilertype = None
         context.options.include = None
+        context.options.testinclude = None
         context.options.testlibpath = None
 
         configure( context )
