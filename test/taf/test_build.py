@@ -138,7 +138,7 @@ class TestBuild( unittest.TestCase ):
             builds2.lib,
         )
         _self.assertEqual(
-            [],
+            None,
             builds2.use,
         )
 
