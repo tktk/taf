@@ -14,6 +14,8 @@ def configure(
     _context.env.DEFINES = _generateDefines( _context )
     _context.env.LINKFLAGS = _generateLinkflags( _context )
 
+    _context.env.INCLUDES_TEST = _generateTestincludes( _context )
+
     TEST_LIBPATH = _generateTestlibpath( _context )
     _context.env.LIBPATH_TEST = TEST_LIBPATH
     _context.env.RPATH_TEST = TEST_LIBPATH
@@ -224,6 +226,21 @@ def _generateLinkflagsMsvc(
         linkflags = getLinkflagsMsvcRelease()
 
     return linkflags
+
+def _generateTestincludes(
+    _context,
+):
+    includes = _context.options.testinclude
+
+    if includes is None:
+        includes = getTestincludes()
+
+    _context.msg(
+        'test includes',
+        includes,
+    )
+
+    return includes
 
 def _generateTestlibpath(
     _context,

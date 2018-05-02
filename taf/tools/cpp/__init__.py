@@ -5,6 +5,7 @@ HEADER_DIR = 'inc'
 
 INCLUDES = None
 
+TEST_INCLUDES = None
 TEST_LIBPATH = None
 
 CXXFLAGS_GCC_COMMON_DEFAULT = [
@@ -118,6 +119,10 @@ def getHeaderDir(
 def getIncludes(
 ):
     return INCLUDES
+
+def getTestincludes(
+):
+    return TEST_INCLUDES
 
 def getTestlibpath(
 ):
