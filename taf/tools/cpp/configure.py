@@ -233,4 +233,9 @@ def _generateTestlibpath(
     if libpath is None:
         libpath = getTestlibpath()
 
+    _context.msg(
+        'test libpath',
+        libpath,
+    )
+
     return libpath

@@ -4,7 +4,7 @@ DEPENDS = None
 BUILDER = None
 TARGET = None
 SOURCE = None
-LIB = []
+LIB = None
 USE = []
 
 def initialize(
@@ -20,5 +20,5 @@ def initialize(
     BUILDER = None
     TARGET = None
     SOURCE = None
-    LIB = []
+    LIB = None
     USE = []

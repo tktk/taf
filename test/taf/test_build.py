@@ -58,7 +58,6 @@ class TestBuild( unittest.TestCase ):
             ],
             builds0.lib,
         )
-        #TODO
         _self.assertEqual(
             [
                 'module1use1',
@@ -105,7 +104,6 @@ class TestBuild( unittest.TestCase ):
             ],
             builds1.lib,
         )
-        #TODO
         _self.assertEqual(
             [
                 'module2use1',
@@ -136,10 +134,9 @@ class TestBuild( unittest.TestCase ):
             builds2.source,
         )
         _self.assertEqual(
-            [],
+            None,
             builds2.lib,
         )
-        #TODO
         _self.assertEqual(
             [],
             builds2.use,
