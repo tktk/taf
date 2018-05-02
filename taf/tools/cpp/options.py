@@ -8,6 +8,7 @@ def options(
     _addCompilerTypeOption( _context )
     _addLinkerTypeOption( _context )
     _addIncludesOption( _context )
+    _addTestIncludesOption( _context )
     _addTestLibpathOption( _context )
 
 def _addCompilerTypeOption(
@@ -33,6 +34,15 @@ def _addIncludesOption(
 ):
     _context.add_option(
         optionKey( 'include' ),
+        action = 'append',
+        default = None,
+    )
+
+def _addTestIncludesOption(
+    _context,
+):
+    _context.add_option(
+        optionKey( 'testinclude' ),
         action = 'append',
         default = None,
     )
