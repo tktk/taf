@@ -282,8 +282,79 @@ class TestConfigure( unittest.TestCase ):
             context.env.RPATH_TEST,
         )
 
-    #TODO test_testlibpathUserTestlibpath
-    #TODO test_testlibpathFromOption
+    def test_testlibpathUserTestlibpath(
+        _self,
+    ):
+        context = _DummyContext()
+
+        context.env.taf = {
+            'BUILD' : 'debug',
+        }
+
+        cpp.TEST_LIBPATH = [
+            'libpath1',
+            'libpath2',
+        ]
+
+        context.options.testlibpath = None
+
+        context.options.compilertype = None
+        context.options.linkertype = None
+        context.options.include = None
+        context.options.testinclude = None
+
+        configure( context )
+
+        _self.assertEqual(
+            [
+                'libpath1',
+                'libpath2',
+            ],
+            context.env.LIBPATH_TEST,
+        )
+        _self.assertEqual(
+            [
+                'libpath1',
+                'libpath2',
+            ],
+            context.env.RPATH_TEST,
+        )
+
+    def test_testlibpathFromOption(
+        _self,
+    ):
+        context = _DummyContext()
+
+        context.env.taf = {
+            'BUILD' : 'debug',
+        }
+
+        context.options.testlibpath = [
+            'libpath1',
+            'libpath2',
+        ]
+
+        context.options.compilertype = None
+        context.options.linkertype = None
+        context.options.include = None
+        context.options.testinclude = None
+
+        configure( context )
+
+        _self.assertEqual(
+            [
+                'libpath1',
+                'libpath2',
+            ],
+            context.env.LIBPATH_TEST,
+        )
+        _self.assertEqual(
+            [
+                'libpath1',
+                'libpath2',
+            ],
+            context.env.RPATH_TEST,
+        )
 
     def test_cxxflagsGccDebug(
         _self,
