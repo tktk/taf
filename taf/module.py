@@ -30,8 +30,6 @@ def initialize(
 def importModule(
     _moduleName,
 ):
-    #TODO
-    pass
-#    initialize()
-#
-#    importlib.import_module( taf.TSCRIPTS_DIR + '.' + _moduleName )
+    initialize()
+
+    importlib.import_module( taf.TSCRIPTS_DIR + '.' + _moduleName )
