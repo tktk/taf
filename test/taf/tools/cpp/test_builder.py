@@ -58,7 +58,56 @@ class TestBuilder( unittest.TestCase ):
             BUILD.use,
         )
 
-    #TODO test_programNoneLib
+    def test_programNoneLib(
+        _self,
+    ):
+        context = _DummyContext()
+
+        taf.PACKAGE_NAME = 'package'
+
+        cpp.SOURCE_DIR = 'src'
+
+        cpp.program(
+            context,
+            'target',
+            [
+                'source2',
+                'source1',
+            ],
+            None,
+            [
+                'use',
+            ],
+        )
+
+        BUILD = context.builds[ 0 ]
+        _self.assertEqual(
+            [
+                'cxx',
+                'cxxprogram',
+            ],
+            BUILD.features,
+        )
+        _self.assertEqual(
+            'target',
+            BUILD.target,
+        )
+        _self.assertEqual(
+            [
+                'src/package/source1.cpp',
+                'src/package/source2.cpp',
+            ],
+            BUILD.source,
+        )
+        _self.assertEqual(
+            [],
+            BUILD.lib,
+        )
+        _self.assertEqual(
+            [ 'use' ],
+            BUILD.use,
+        )
+
     #TODO test_programNoneUse
 
     def test_programUserSourceDir(
