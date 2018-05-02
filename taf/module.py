@@ -32,4 +32,4 @@ def importModule(
 ):
     initialize()
 
-    importlib.import_module( taf.TSCRIPTS_DIR + '.' + _moduleName )
+    importlib.reload( importlib.import_module( taf.TSCRIPTS_DIR + '.' + _moduleName ) )
