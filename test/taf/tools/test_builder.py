@@ -13,9 +13,8 @@ class TestBuild( unittest.TestCase ):
                 'sourcedir/test.txt'
             ],
             builder.generateSource(
-                'test',
+                'test.txt',
                 'sourcedir',
-                '.txt',
             ),
         )
 
@@ -30,12 +29,11 @@ class TestBuild( unittest.TestCase ):
             ],
             builder.generateSource(
                 [
-                    'test1',
-                    'test3',
-                    'test2',
+                    'test1.txt',
+                    'test3.txt',
+                    'test2.txt',
                 ],
                 'sourcedir',
-                '.txt',
             ),
         )
 
@@ -52,15 +50,14 @@ class TestBuild( unittest.TestCase ):
             builder.generateSource(
                 {
                     'dir2' : [
-                        'test2',
-                        'test1',
+                        'test2.txt',
+                        'test1.txt',
                     ],
                     'dir1' : [
-                        'test1',
-                        'test2',
+                        'test1.txt',
+                        'test2.txt',
                     ],
                 },
                 'sourcedir',
-                '.txt',
             ),
         )

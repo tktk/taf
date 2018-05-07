@@ -19,8 +19,8 @@ class TestBuilder( unittest.TestCase ):
             context,
             'target',
             [
-                'source2',
-                'source1',
+                'source2.cpp',
+                'source1.cpp',
             ],
             [
                 'lib',
@@ -71,8 +71,8 @@ class TestBuilder( unittest.TestCase ):
             context,
             'target',
             [
-                'source2',
-                'source1',
+                'source2.cpp',
+                'source1.cpp',
             ],
             None,
             [
@@ -121,8 +121,8 @@ class TestBuilder( unittest.TestCase ):
             context,
             'target',
             [
-                'source2',
-                'source1',
+                'source2.cpp',
+                'source1.cpp',
             ],
             [
                 'lib',
@@ -171,8 +171,8 @@ class TestBuilder( unittest.TestCase ):
             context,
             'target',
             [
-                'source2',
-                'source1',
+                'source2.cpp',
+                'source1.cpp',
             ],
             [
                 'lib',
@@ -223,8 +223,8 @@ class TestBuilder( unittest.TestCase ):
             context,
             'target',
             [
-                'source2',
-                'source1',
+                'source2.cpp',
+                'source1.cpp',
             ],
             [
                 'lib',
@@ -275,8 +275,8 @@ class TestBuilder( unittest.TestCase ):
             context,
             'target',
             [
-                'source2',
-                'source1',
+                'source2.cpp',
+                'source1.cpp',
             ],
             [
                 'lib',
