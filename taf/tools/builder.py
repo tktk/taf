@@ -50,15 +50,20 @@ def _generateSourceListForDict(
     _PREFIX,
 ):
     for DIR, SOURCE in _SOURCE_DICT.items():
-        PREFIX = os.path.join(
-            _PREFIX,
-            DIR,
-        )
+        prefix = None
+
+        if _PREFIX is None:
+            prefix = DIR
+        else:
+            prefix = os.path.join(
+                _PREFIX,
+                DIR,
+            )
 
         _generateSourceList(
             _sourceList,
             SOURCE,
-            PREFIX,
+            prefix,
         )
 
 def _generateSourceListForList(
