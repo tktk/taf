@@ -10,11 +10,23 @@ class TestBuild( unittest.TestCase ):
     ):
         _self.assertEqual(
             [
-                'sourcedir/test.txt'
+                'sourcedir/test.txt',
             ],
             builder.generateSource(
                 'test.txt',
                 'sourcedir',
+            ),
+        )
+
+    def test_generateSourceForStringWithoutPrefix(
+        _self,
+    ):
+        _self.assertEqual(
+            [
+                'test.txt',
+            ],
+            builder.generateSource(
+                'test.txt',
             ),
         )
 
@@ -36,6 +48,8 @@ class TestBuild( unittest.TestCase ):
                 'sourcedir',
             ),
         )
+
+    #TODO test_generateSourceForListWithoutPrefix
 
     def test_generateSourceForDict(
         _self,
@@ -61,3 +75,5 @@ class TestBuild( unittest.TestCase ):
                 'sourcedir',
             ),
         )
+
+    #TODO test_generateSourceForDictWithoutPrefix
