@@ -4,7 +4,7 @@ import os.path
 
 def generateSource(
     _SOURCE,
-    _PREFIX,
+    _PREFIX = None,
 ):
     source = []
 
@@ -78,9 +78,14 @@ def _generateSourceListForString(
     _SOURCE_STRING,
     _PREFIX,
 ):
-    _sourceList.append(
-        os.path.join(
+    source = None
+
+    if _PREFIX is None:
+        source = _SOURCE_STRING
+    else:
+        source = os.path.join(
             _PREFIX,
             _SOURCE_STRING,
         )
-    )
+
+    _sourceList.append( source )
