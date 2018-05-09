@@ -11,6 +11,9 @@ class TestBuilder( unittest.TestCase ):
     ):
         context = _DummyContext()
 
+        testdata.TEST_DIR = 'test'
+        testdata.TESTDATA_DIR = 'testdata'
+
         testdata.copy(
             context,
             'target',
@@ -51,6 +54,7 @@ class TestBuilder( unittest.TestCase ):
         context = _DummyContext()
 
         testdata.TEST_DIR = 'usertest'
+        testdata.TESTDATA_DIR = 'testdata'
 
         testdata.copy(
             context,
@@ -79,6 +83,48 @@ class TestBuilder( unittest.TestCase ):
                 ),
                 os.path.join(
                     'testdata',
+                    'target',
+                    'source2.txt',
+                ),
+            ],
+            BUILD.source,
+        )
+
+    def test_copyUserTestdataDir(
+        _self,
+    ):
+        context = _DummyContext()
+
+        testdata.TEST_DIR = 'test'
+        testdata.TESTDATA_DIR = 'usertestdata'
+
+        testdata.copy(
+            context,
+            'target',
+            [
+                'source2.txt',
+                'source1.txt',
+            ],
+        )
+
+        BUILD = context.builds[ 0 ]
+        _self.assertIsNotNone( BUILD.rule )
+        _self.assertEqual(
+            os.path.join(
+                'test',
+                'target',
+            ),
+            BUILD.target,
+        )
+        _self.assertEqual(
+            [
+                os.path.join(
+                    'usertestdata',
+                    'target',
+                    'source1.txt',
+                ),
+                os.path.join(
+                    'usertestdata',
                     'target',
                     'source2.txt',
                 ),
