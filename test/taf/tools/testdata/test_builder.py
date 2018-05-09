@@ -45,6 +45,47 @@ class TestBuilder( unittest.TestCase ):
             BUILD.source,
         )
 
+    def test_copyUserTestDir(
+        _self,
+    ):
+        context = _DummyContext()
+
+        testdata.TEST_DIR = 'usertest'
+
+        testdata.copy(
+            context,
+            'target',
+            [
+                'source2.txt',
+                'source1.txt',
+            ],
+        )
+
+        BUILD = context.builds[ 0 ]
+        _self.assertIsNotNone( BUILD.rule )
+        _self.assertEqual(
+            os.path.join(
+                'usertest',
+                'target',
+            ),
+            BUILD.target,
+        )
+        _self.assertEqual(
+            [
+                os.path.join(
+                    'testdata',
+                    'target',
+                    'source1.txt',
+                ),
+                os.path.join(
+                    'testdata',
+                    'target',
+                    'source2.txt',
+                ),
+            ],
+            BUILD.source,
+        )
+
 class _DummyBuild:
     def __init__(
         _self,
