@@ -14,11 +14,3 @@ def loadTools(
 
     if LOAD_TOOLS is not None:
         _context.load( LOAD_TOOLS )
-
-#REMOVEME
-def importModule(
-    _moduleName,
-):
-    module.initialize()
-
-    importlib.import_module( taf.TSCRIPTS_DIR + '.' + _moduleName )

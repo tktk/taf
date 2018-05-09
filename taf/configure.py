@@ -65,7 +65,7 @@ def _addBuildModules(
 
     _buildModules.append( _MODULE )
 
-    common.importModule( _MODULE )
+    module.importModule( _MODULE )
 
     DEPENDS = module.DEPENDS
 

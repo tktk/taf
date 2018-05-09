@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from . import common
 from . import taf
 from . import module
 
@@ -8,7 +7,7 @@ def build(
     _context,
 ):
     for moduleName in _context.env.taf[ 'BUILD_MODULES' ]:
-        common.importModule( moduleName )
+        module.importModule( moduleName )
 
         module.BUILDER(
             _context,
