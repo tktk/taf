@@ -4,6 +4,8 @@ from . import *
 
 from waflib import Utils
 
+import os.path
+
 def configure(
     _context,
 ):
@@ -88,12 +90,24 @@ def _generateIncludes(
     if includeOption is not None:
         includes.extend( includeOption )
 
+    includes = _generateAbspathList( includes )
+
     _context.msg(
         'includes',
         includes,
     )
 
     return includes
+
+def _generateAbspathList(
+    _PATH_LIST,
+):
+    abspathList = []
+
+    for PATH in _PATH_LIST:
+        abspathList.append( os.path.abspath( PATH ) )
+
+    return abspathList
 
 def _generateCxxflags(
     _context,
