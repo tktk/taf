@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from . import *
 from .. import builder
 
 import os
@@ -72,7 +73,7 @@ def _generateTarget(
     _TARGET,
 ):
     return os.path.join(
-        'test',
+        getTestDir(),
         _TARGET,
     )
 
