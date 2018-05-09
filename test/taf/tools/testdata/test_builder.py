@@ -26,7 +26,7 @@ class TestBuilder( unittest.TestCase ):
             os.path.join(
                 'test',
                 'target',
-            )
+            ),
             BUILD.target,
         )
         _self.assertEqual(
