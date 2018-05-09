@@ -283,7 +283,6 @@ class TestConfigure( unittest.TestCase ):
             context.env.RPATH_TEST,
         )
 
-    #TODO
     def test_testlibpathUserTestlibpath(
         _self,
     ):
@@ -309,15 +308,15 @@ class TestConfigure( unittest.TestCase ):
 
         _self.assertEqual(
             [
-                'libpath1',
-                'libpath2',
+                os.path.abspath( 'libpath1' ),
+                os.path.abspath( 'libpath2' ),
             ],
             context.env.LIBPATH_TEST,
         )
         _self.assertEqual(
             [
-                'libpath1',
-                'libpath2',
+                os.path.abspath( 'libpath1' ),
+                os.path.abspath( 'libpath2' ),
             ],
             context.env.RPATH_TEST,
         )
@@ -345,15 +344,15 @@ class TestConfigure( unittest.TestCase ):
 
         _self.assertEqual(
             [
-                'libpath1',
-                'libpath2',
+                os.path.abspath( 'libpath1' ),
+                os.path.abspath( 'libpath2' ),
             ],
             context.env.LIBPATH_TEST,
         )
         _self.assertEqual(
             [
-                'libpath1',
-                'libpath2',
+                os.path.abspath( 'libpath1' ),
+                os.path.abspath( 'libpath2' ),
             ],
             context.env.RPATH_TEST,
         )
