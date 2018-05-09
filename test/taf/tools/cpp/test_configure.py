@@ -4,6 +4,7 @@ from taf.tools.cpp import configure
 from taf.tools import cpp
 
 import unittest
+import os.path
 
 class TestConfigure( unittest.TestCase ):
     def test_compilerTypeForLinux(
@@ -72,7 +73,7 @@ class TestConfigure( unittest.TestCase ):
 
         _self.assertEqual(
             [
-                cpp.HEADER_DIR,
+                os.path.abspath( cpp.HEADER_DIR ),
             ],
             context.env.INCLUDES,
         )
@@ -102,9 +103,9 @@ class TestConfigure( unittest.TestCase ):
 
         _self.assertEqual(
             [
-                cpp.HEADER_DIR,
-                'includedir1',
-                'includedir2',
+                os.path.abspath( cpp.HEADER_DIR ),
+                os.path.abspath( 'includedir1' ),
+                os.path.abspath( 'includedir2' ),
             ],
             context.env.INCLUDES,
         )
@@ -132,9 +133,9 @@ class TestConfigure( unittest.TestCase ):
 
         _self.assertEqual(
             [
-                cpp.HEADER_DIR,
-                'includedir1',
-                'includedir2',
+                os.path.abspath( cpp.HEADER_DIR ),
+                os.path.abspath( 'includedir1' ),
+                os.path.abspath( 'includedir2' ),
             ],
             context.env.INCLUDES,
         )
@@ -164,9 +165,9 @@ class TestConfigure( unittest.TestCase ):
 
         _self.assertEqual(
             [
-                'userinc',
-                'includedir1',
-                'includedir2',
+                os.path.abspath( 'userinc' ),
+                os.path.abspath( 'includedir1' ),
+                os.path.abspath( 'includedir2' ),
             ],
             context.env.INCLUDES,
         )
@@ -194,6 +195,7 @@ class TestConfigure( unittest.TestCase ):
             context.env.INCLUDES_TEST,
         )
 
+    #TODO
     def test_testincludesUserTestincludes(
         _self,
     ):
