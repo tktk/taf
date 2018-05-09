@@ -195,7 +195,6 @@ class TestConfigure( unittest.TestCase ):
             context.env.INCLUDES_TEST,
         )
 
-    #TODO
     def test_testincludesUserTestincludes(
         _self,
     ):
@@ -221,8 +220,8 @@ class TestConfigure( unittest.TestCase ):
 
         _self.assertEqual(
             [
-                'includedir1',
-                'includedir2',
+                os.path.abspath( 'includedir1' ),
+                os.path.abspath( 'includedir2' ),
             ],
             context.env.INCLUDES_TEST,
         )
@@ -250,8 +249,8 @@ class TestConfigure( unittest.TestCase ):
 
         _self.assertEqual(
             [
-                'includedir1',
-                'includedir2',
+                os.path.abspath( 'includedir1' ),
+                os.path.abspath( 'includedir2' ),
             ],
             context.env.INCLUDES_TEST,
         )
@@ -284,6 +283,7 @@ class TestConfigure( unittest.TestCase ):
             context.env.RPATH_TEST,
         )
 
+    #TODO
     def test_testlibpathUserTestlibpath(
         _self,
     ):
