@@ -84,7 +84,7 @@ def _generateSource(
     return builder.generateSource(
         _SOURCE,
         os.path.join(
-            'testdata',
+            getTestdataDir(),
             _TARGET,
         ),
     )
