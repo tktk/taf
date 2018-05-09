@@ -99,16 +99,6 @@ def _generateIncludes(
 
     return includes
 
-def _generateAbspathList(
-    _PATH_LIST,
-):
-    abspathList = []
-
-    for PATH in _PATH_LIST:
-        abspathList.append( os.path.abspath( PATH ) )
-
-    return abspathList
-
 def _generateCxxflags(
     _context,
 ):
@@ -249,6 +239,9 @@ def _generateTestincludes(
     if includes is None:
         includes = getTestincludes()
 
+    if includes is not None:
+        includes = _generateAbspathList( includes )
+
     _context.msg(
         'test includes',
         includes,
@@ -270,3 +263,13 @@ def _generateTestlibpath(
     )
 
     return libpath
+
+def _generateAbspathList(
+    _PATH_LIST,
+):
+    abspathList = []
+
+    for PATH in _PATH_LIST:
+        abspathList.append( os.path.abspath( PATH ) )
+
+    return abspathList
