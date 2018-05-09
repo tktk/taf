@@ -51,8 +51,6 @@ def _copy(
             TARGET,
         )
 
-    return None
-
 def _compareFile(
     _target,
     _source,
