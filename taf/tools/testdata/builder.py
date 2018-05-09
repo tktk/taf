@@ -12,6 +12,8 @@ def copy(
     _context,
     _TARGET,
     _SOURCE,
+    _LIB,
+    _USE,
 ):
     _context(
         rule = _copy,
@@ -25,49 +27,46 @@ def copy(
 def _copy(
     _task,
 ):
-    #TODO
-    pass
+    TARGET = _task.outputs[ 0 ].abspath()
 
-#    TARGET = _task.outputs[ 0 ].abspath()
-#
-#    if os.path.exists( TARGET ) == False:
-#        os.makedirs( TARGET )
-#
-#    for input in _task.inputs:
-#        SOURCE = input.abspath()
-#
-#        TARGET_FILE = os.path.join(
-#            TARGET,
-#            str( input ),
-#        )
-#
-#        if _compareFile(
-#            TARGET_FILE,
-#            SOURCE,
-#        ) == True:
-#            continue
-#
-#        shutil.copy(
-#            SOURCE,
-#            TARGET,
-#        )
-#
-#    return None
-#
-#def _compareFile(
-#    _target,
-#    _source,
-#):
-#    if os.path.exists( _target ) == False:
-#        return False
-#
-#    if filecmp.cmp(
-#        _source,
-#        _target,
-#    ) == False:
-#        return False
-#
-#    return True
+    if os.path.exists( TARGET ) == False:
+        os.makedirs( TARGET )
+
+    for input in _task.inputs:
+        SOURCE = input.abspath()
+
+        TARGET_FILE = os.path.join(
+            TARGET,
+            str( input ),
+        )
+
+        if _compareFile(
+            TARGET_FILE,
+            SOURCE,
+        ) == True:
+            continue
+
+        shutil.copy(
+            SOURCE,
+            TARGET,
+        )
+
+    return None
+
+def _compareFile(
+    _target,
+    _source,
+):
+    if os.path.exists( _target ) == False:
+        return False
+
+    if filecmp.cmp(
+        _source,
+        _target,
+    ) == False:
+        return False
+
+    return True
 
 def _generateTarget(
     _TARGET,

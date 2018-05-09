@@ -21,6 +21,8 @@ class TestBuilder( unittest.TestCase ):
                 'source2.txt',
                 'source1.txt',
             ],
+            None,
+            None,
         )
 
         BUILD = context.builds[ 0 ]
@@ -63,6 +65,8 @@ class TestBuilder( unittest.TestCase ):
                 'source2.txt',
                 'source1.txt',
             ],
+            None,
+            None,
         )
 
         BUILD = context.builds[ 0 ]
@@ -105,6 +109,8 @@ class TestBuilder( unittest.TestCase ):
                 'source2.txt',
                 'source1.txt',
             ],
+            None,
+            None,
         )
 
         BUILD = context.builds[ 0 ]

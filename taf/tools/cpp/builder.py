@@ -60,8 +60,10 @@ def gtest(
         _context,
         _TARGET,
         _SOURCE,
-        _LIB + [ 'gtest' ],
-        _USE + [ 'TEST' ],
+        _LIB,
+        _USE,
+        [ 'gtest' ],
+        [ 'TEST' ],
     )
 
 def _build(
@@ -71,7 +73,21 @@ def _build(
     _SOURCE,
     _LIB,
     _USE,
+    _APPEND_LIB = [],
+    _APPEND_USE = [],
 ):
+    lib = []
+    if _LIB is not None:
+        lib.extend( _LIB )
+
+    lib.extend( _APPEND_LIB )
+
+    use = []
+    if _USE is not None:
+        use.extend( _USE )
+
+    use.extend( _APPEND_USE )
+
     _context(
         features = _FEATURES,
         target = _TARGET,
@@ -82,6 +98,6 @@ def _build(
                 taf.PACKAGE_NAME,
             ),
         ),
-        lib = _LIB if _LIB is not None else [],
-        use = _USE if _USE is not None else [],
+        lib = lib,
+        use = use,
     )
