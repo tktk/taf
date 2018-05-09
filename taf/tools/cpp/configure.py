@@ -257,6 +257,9 @@ def _generateTestlibpath(
     if libpath is None:
         libpath = getTestlibpath()
 
+    if libpath is not None:
+        libpath = _generateAbspathList( libpath )
+
     _context.msg(
         'test libpath',
         libpath,
