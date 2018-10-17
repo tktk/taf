@@ -112,6 +112,27 @@ class TestConfigure( unittest.TestCase ):
             context.env.taf[ 'BUILD_MODULES' ],
         )
 
+    def test_buildModules_withoutTestModules(
+        _self,
+    ):
+        context = _DummyContext()
+
+        context.options.withouttest = True
+        context.options.build = 'debug'
+        context.options[ 'enable.withtestmodule' ] = True
+
+        taf.TSCRIPTS_DIR = 'test.tscripts_configure'
+
+        configure( context )
+
+        _self.assertEqual(
+            [
+                'withtestmodule',
+                'module',
+            ],
+            context.env.taf[ 'BUILD_MODULES' ],
+        )
+
 class _DummyOptions:
     def __setattr__(
         _self,
