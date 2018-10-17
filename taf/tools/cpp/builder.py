@@ -96,6 +96,7 @@ def _build(
     use.extend( _APPEND_USE )
 
     _context(
+        name = _TARGET_NAME,
         features = _FEATURES,
         target = builder.generateTarget(
             _TARGET_DIR,
