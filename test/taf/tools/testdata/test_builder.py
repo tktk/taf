@@ -18,6 +18,7 @@ class TestBuilder( unittest.TestCase ):
 
         testdata.copy(
             context,
+            'test',
             'target',
             [
                 'source2.txt',
@@ -63,6 +64,7 @@ class TestBuilder( unittest.TestCase ):
 
         testdata.copy(
             context,
+            'usertest',
             'target',
             [
                 'source2.txt',
@@ -108,6 +110,7 @@ class TestBuilder( unittest.TestCase ):
 
         testdata.copy(
             context,
+            'test',
             'target',
             [
                 'source2.txt',
