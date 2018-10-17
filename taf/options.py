@@ -9,6 +9,7 @@ def options(
     _context,
 ):
     _addBuildOption( _context )
+    _addWithoutTestOption( _context )
     _addModuleOptions( _context )
 
     common.loadTools( _context )
@@ -20,6 +21,15 @@ def _addBuildOption(
         optionKey( 'build' ),
         action = 'store',
         default = None,
+    )
+
+def _addWithoutTestOption(
+    _context,
+):
+    _context.add_option(
+        optionKey( 'withouttest' ),
+        action = 'store_true',
+        default = False,
     )
 
 def _addModuleOptions(
