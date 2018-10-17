@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from taf.tools import cpp
-from taf import taf
 
 import unittest
 
@@ -11,12 +10,11 @@ class TestBuilder( unittest.TestCase ):
     ):
         context = _DummyContext()
 
-        taf.PACKAGE_NAME = 'package'
-
         cpp.SOURCE_DIR = 'src'
 
         cpp.program(
             context,
+            'package',
             'target',
             [
                 'source2.cpp',
@@ -39,7 +37,10 @@ class TestBuilder( unittest.TestCase ):
             BUILD.features,
         )
         _self.assertEqual(
-            'target',
+            os.path.join(
+                'package',
+                'target',
+            ),
             BUILD.target,
         )
         _self.assertEqual(
@@ -63,12 +64,11 @@ class TestBuilder( unittest.TestCase ):
     ):
         context = _DummyContext()
 
-        taf.PACKAGE_NAME = 'package'
-
         cpp.SOURCE_DIR = 'src'
 
         cpp.program(
             context,
+            'package',
             'target',
             [
                 'source2.cpp',
@@ -89,7 +89,10 @@ class TestBuilder( unittest.TestCase ):
             BUILD.features,
         )
         _self.assertEqual(
-            'target',
+            os.path.join(
+                'package',
+                'target',
+            ),
             BUILD.target,
         )
         _self.assertEqual(
@@ -113,12 +116,11 @@ class TestBuilder( unittest.TestCase ):
     ):
         context = _DummyContext()
 
-        taf.PACKAGE_NAME = 'package'
-
         cpp.SOURCE_DIR = 'src'
 
         cpp.program(
             context,
+            'package',
             'target',
             [
                 'source2.cpp',
@@ -139,7 +141,10 @@ class TestBuilder( unittest.TestCase ):
             BUILD.features,
         )
         _self.assertEqual(
-            'target',
+            os.path.join(
+                'package',
+                'target',
+            ),
             BUILD.target,
         )
         _self.assertEqual(
@@ -163,12 +168,11 @@ class TestBuilder( unittest.TestCase ):
     ):
         context = _DummyContext()
 
-        taf.PACKAGE_NAME = 'package'
-
         cpp.SOURCE_DIR = 'usersrc'
 
         cpp.program(
             context,
+            'package',
             'target',
             [
                 'source2.cpp',
@@ -191,7 +195,10 @@ class TestBuilder( unittest.TestCase ):
             BUILD.features,
         )
         _self.assertEqual(
-            'target',
+            os.path.join(
+                'package',
+                'target',
+            ),
             BUILD.target,
         )
         _self.assertEqual(
@@ -215,12 +222,11 @@ class TestBuilder( unittest.TestCase ):
     ):
         context = _DummyContext()
 
-        taf.PACKAGE_NAME = 'package'
-
         cpp.SOURCE_DIR = 'src'
 
         cpp.shlib(
             context,
+            'package',
             'target',
             [
                 'source2.cpp',
@@ -243,7 +249,10 @@ class TestBuilder( unittest.TestCase ):
             BUILD.features,
         )
         _self.assertEqual(
-            'target',
+            os.path.join(
+                'package',
+                'target',
+            ),
             BUILD.target,
         )
         _self.assertEqual(
@@ -267,12 +276,11 @@ class TestBuilder( unittest.TestCase ):
     ):
         context = _DummyContext()
 
-        taf.PACKAGE_NAME = 'package'
-
         cpp.SOURCE_DIR = 'src'
 
         cpp.gtest(
             context,
+            'package',
             'target',
             [
                 'source2.cpp',
@@ -296,7 +304,10 @@ class TestBuilder( unittest.TestCase ):
             BUILD.features,
         )
         _self.assertEqual(
-            'target',
+            os.path.join(
+                'package',
+                'target',
+            ),
             BUILD.target,
         )
         _self.assertEqual(
