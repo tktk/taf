@@ -8,12 +8,12 @@ from pydoc import ModuleScanner
 def options(
     _context,
 ):
-    _addBuildOptions( _context )
+    _addBuildOption( _context )
     _addModuleOptions( _context )
 
     common.loadTools( _context )
 
-def _addBuildOptions(
+def _addBuildOption(
     _context,
 ):
     _context.add_option(

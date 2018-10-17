@@ -27,6 +27,27 @@ class TestOptions( unittest.TestCase ):
             OPTION,
         )
 
+    def test_withouttest(
+        _self,
+    ):
+        context = _DummyContext()
+
+        options( context )
+
+        OPTION = _findOption(
+            context,
+            'withouttest',
+        )
+
+        _self.assertEqual(
+            _DummyOption(
+                '--withouttest',
+                'store_true',
+                False,
+            ),
+            OPTION,
+        )
+
     def test_loadTools(
         _self,
     ):
