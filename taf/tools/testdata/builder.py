@@ -2,7 +2,6 @@
 
 from . import *
 from .. import builder
-from ... import taf
 
 import os
 import os.path
@@ -11,17 +10,21 @@ import filecmp
 
 def copy(
     _context,
-    _TARGET,
+    _TARGET_DIR,
+    _TARGET_NAME,
     _SOURCE,
     _LIB,
     _USE,
 ):
     _context(
         rule = _copy,
-        target = _generateTarget( _TARGET ),
+        target = builder.generateTarget(
+            _TARGET_DIR,
+            _TARGET_NAME,
+        ),
         source = _generateSource(
             _SOURCE,
-            _TARGET,
+            _TARGET_NAME,
         ),
     )
 
@@ -67,14 +70,6 @@ def _compareFile(
         return False
 
     return True
-
-def _generateTarget(
-    _TARGET,
-):
-    return os.path.join(
-        taf.TEST_DIR,
-        _TARGET,
-    )
 
 def _generateSource(
     _SOURCE,
