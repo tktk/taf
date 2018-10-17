@@ -151,6 +151,60 @@ class TestBuild( unittest.TestCase ):
             builds2.use,
         )
 
+    def test_buildTestModule(
+        _self,
+    ):
+        context = _DummyContext()
+
+        taf.TSCRIPTS_DIR = 'test.tscripts_build'
+
+        taf.PACKAGE_NAME = 'test_build'
+
+        context.env.taf = {}
+        context.env.taf[ 'BUILD_MODULES' ] = [
+            'testmodule',
+        ]
+
+        #TODO
+
+        build( context )
+
+        _self.assertEqual(
+            1,
+            len( context.builds ),
+        )
+
+        builds0 = context.builds[ 0 ]
+        _self.assertEqual(
+            [
+                'dummyfeature',
+            ],
+            builds0.features,
+        )
+        _self.assertEqual(
+            os.path.join(
+                'test',
+                'testmodule',
+            ),
+            builds0.target,
+        )
+        _self.assertEqual(
+            {
+                'testmodule' : [
+                    'src.cpp',
+                ],
+            },
+            builds0.source,
+        )
+        _self.assertEqual(
+            None,
+            builds0.lib,
+        )
+        _self.assertEqual(
+            None,
+            builds0.use,
+        )
+
     def test_addPostFunctions(
         _self,
     ):
