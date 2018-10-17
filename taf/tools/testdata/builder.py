@@ -2,6 +2,7 @@
 
 from . import *
 from .. import builder
+from ... import taf
 
 import os
 import os.path
@@ -71,7 +72,7 @@ def _generateTarget(
     _TARGET,
 ):
     return os.path.join(
-        getTestDir(),
+        taf.TEST_DIR,
         _TARGET,
     )
 

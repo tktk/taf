@@ -8,3 +8,5 @@ POST_FUNCTIONS = None
 BUILD = 'debug'
 
 TSCRIPTS_DIR = 'tscripts'
+
+TEST_DIR = 'test'

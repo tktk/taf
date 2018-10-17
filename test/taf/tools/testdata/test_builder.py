@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from taf.tools import testdata
+from taf import taf
 
 import unittest
 import os.path
@@ -11,7 +12,8 @@ class TestBuilder( unittest.TestCase ):
     ):
         context = _DummyContext()
 
-        testdata.TEST_DIR = 'test'
+        taf.TEST_DIR = 'test'
+
         testdata.TESTDATA_DIR = 'testdata'
 
         testdata.copy(
@@ -55,7 +57,8 @@ class TestBuilder( unittest.TestCase ):
     ):
         context = _DummyContext()
 
-        testdata.TEST_DIR = 'usertest'
+        taf.TEST_DIR = 'usertest'
+
         testdata.TESTDATA_DIR = 'testdata'
 
         testdata.copy(
@@ -99,7 +102,8 @@ class TestBuilder( unittest.TestCase ):
     ):
         context = _DummyContext()
 
-        testdata.TEST_DIR = 'test'
+        taf.TEST_DIR = 'test'
+
         testdata.TESTDATA_DIR = 'usertestdata'
 
         testdata.copy(
