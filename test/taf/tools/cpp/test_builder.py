@@ -34,6 +34,10 @@ class TestBuilder( unittest.TestCase ):
 
         BUILD = context.builds[ 0 ]
         _self.assertEqual(
+            'target',
+            BUILD.name,
+        )
+        _self.assertEqual(
             [
                 'cxx',
                 'cxxprogram',
@@ -88,6 +92,10 @@ class TestBuilder( unittest.TestCase ):
 
         BUILD = context.builds[ 0 ]
         _self.assertEqual(
+            'target',
+            BUILD.name,
+        )
+        _self.assertEqual(
             [
                 'cxx',
                 'cxxprogram',
@@ -141,6 +149,10 @@ class TestBuilder( unittest.TestCase ):
         )
 
         BUILD = context.builds[ 0 ]
+        _self.assertEqual(
+            'target',
+            BUILD.name,
+        )
         _self.assertEqual(
             [
                 'cxx',
@@ -198,6 +210,10 @@ class TestBuilder( unittest.TestCase ):
 
         BUILD = context.builds[ 0 ]
         _self.assertEqual(
+            'target',
+            BUILD.name,
+        )
+        _self.assertEqual(
             [
                 'cxx',
                 'cxxprogram',
@@ -253,6 +269,10 @@ class TestBuilder( unittest.TestCase ):
         )
 
         BUILD = context.builds[ 0 ]
+        _self.assertEqual(
+            'target',
+            BUILD.name,
+        )
         _self.assertEqual(
             [
                 'cxx',
@@ -310,6 +330,10 @@ class TestBuilder( unittest.TestCase ):
 
         BUILD = context.builds[ 0 ]
         _self.assertEqual(
+            'target',
+            BUILD.name,
+        )
+        _self.assertEqual(
             [
                 'cxx',
                 'cxxprogram',
@@ -349,12 +373,14 @@ class TestBuilder( unittest.TestCase ):
 class _DummyBuild:
     def __init__(
         _self,
+        _name,
         _features,
         _target,
         _source,
         _lib,
         _use,
     ):
+        _self.name = _name
         _self.features = _features
         _self.target = _target
         _self.source = _source
@@ -369,6 +395,7 @@ class _DummyContext:
 
     def __call__(
         _self,
+        name,
         features,
         target,
         source,
@@ -377,6 +404,7 @@ class _DummyContext:
     ):
         _self.builds.append(
             _DummyBuild(
+                name,
                 features,
                 target,
                 source,
