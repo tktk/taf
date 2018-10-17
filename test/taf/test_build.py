@@ -4,7 +4,7 @@ from taf import build
 from taf import taf
 
 import unittest
-import sys
+import os.path
 
 class TestBuild( unittest.TestCase ):
     def test_build(
@@ -39,7 +39,10 @@ class TestBuild( unittest.TestCase ):
             builds0.features,
         )
         _self.assertEqual(
-            'module1',
+            os.path.join(
+                'test_build',
+                'module1',
+            ),
             builds0.target,
         )
         _self.assertEqual(
@@ -75,7 +78,10 @@ class TestBuild( unittest.TestCase ):
             builds1.features,
         )
         _self.assertEqual(
-            'module2',
+            os.path.join(
+                'test_build',
+                'module2',
+            ),
             builds1.target,
         )
         _self.assertEqual(
@@ -121,7 +127,10 @@ class TestBuild( unittest.TestCase ):
             builds2.features,
         )
         _self.assertEqual(
-            'module3',
+            os.path.join(
+                'test_build',
+                'module3',
+            ),
             builds2.target,
         )
         _self.assertEqual(
