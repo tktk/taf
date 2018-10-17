@@ -2,6 +2,15 @@
 
 import os.path
 
+def generateTarget(
+    _DIR,
+    _NAME,
+):
+    return os.path.join(
+        _DIR,
+        _NAME,
+    )
+
 def generateSource(
     _SOURCE,
     _PREFIX = None,

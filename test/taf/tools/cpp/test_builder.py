@@ -1,14 +1,18 @@
 # -*- coding: utf-8 -*-
 
 from taf.tools import cpp
+from taf import taf
 
 import unittest
+import os.path
 
 class TestBuilder( unittest.TestCase ):
     def test_program(
         _self,
     ):
         context = _DummyContext()
+
+        taf.PACKAGE_NAME = 'package'
 
         cpp.SOURCE_DIR = 'src'
 
@@ -64,6 +68,8 @@ class TestBuilder( unittest.TestCase ):
     ):
         context = _DummyContext()
 
+        taf.PACKAGE_NAME = 'package'
+
         cpp.SOURCE_DIR = 'src'
 
         cpp.program(
@@ -116,6 +122,8 @@ class TestBuilder( unittest.TestCase ):
     ):
         context = _DummyContext()
 
+        taf.PACKAGE_NAME = 'package'
+
         cpp.SOURCE_DIR = 'src'
 
         cpp.program(
@@ -167,6 +175,8 @@ class TestBuilder( unittest.TestCase ):
         _self,
     ):
         context = _DummyContext()
+
+        taf.PACKAGE_NAME = 'package'
 
         cpp.SOURCE_DIR = 'usersrc'
 
@@ -222,6 +232,8 @@ class TestBuilder( unittest.TestCase ):
     ):
         context = _DummyContext()
 
+        taf.PACKAGE_NAME = 'package'
+
         cpp.SOURCE_DIR = 'src'
 
         cpp.shlib(
@@ -275,6 +287,8 @@ class TestBuilder( unittest.TestCase ):
         _self,
     ):
         context = _DummyContext()
+
+        taf.PACKAGE_NAME = 'package'
 
         cpp.SOURCE_DIR = 'src'
 

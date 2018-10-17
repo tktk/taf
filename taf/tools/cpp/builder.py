@@ -8,7 +8,8 @@ import os.path
 
 def program(
     _context,
-    _TARGET,
+    _TARGET_DIR,
+    _TARGET_NAME,
     _SOURCE,
     _LIB,
     _USE,
@@ -19,7 +20,8 @@ def program(
             'cxxprogram',
         ],
         _context,
-        _TARGET,
+        _TARGET_DIR,
+        _TARGET_NAME,
         _SOURCE,
         _LIB,
         _USE,
@@ -27,7 +29,8 @@ def program(
 
 def shlib(
     _context,
-    _TARGET,
+    _TARGET_DIR,
+    _TARGET_NAME,
     _SOURCE,
     _LIB,
     _USE,
@@ -38,7 +41,8 @@ def shlib(
             'cxxshlib',
         ],
         _context,
-        _TARGET,
+        _TARGET_DIR,
+        _TARGET_NAME,
         _SOURCE,
         _LIB,
         _USE,
@@ -46,7 +50,8 @@ def shlib(
 
 def gtest(
     _context,
-    _TARGET,
+    _TARGET_DIR,
+    _TARGET_NAME,
     _SOURCE,
     _LIB,
     _USE,
@@ -58,7 +63,8 @@ def gtest(
             'test',
         ],
         _context,
-        _TARGET,
+        _TARGET_DIR,
+        _TARGET_NAME,
         _SOURCE,
         _LIB,
         _USE,
@@ -69,7 +75,8 @@ def gtest(
 def _build(
     _FEATURES,
     _context,
-    _TARGET,
+    _TARGET_DIR,
+    _TARGET_NAME,
     _SOURCE,
     _LIB,
     _USE,
@@ -90,7 +97,10 @@ def _build(
 
     _context(
         features = _FEATURES,
-        target = _TARGET,
+        target = builder.generateTarget(
+            _TARGET_DIR,
+            _TARGET_NAME,
+        ),
         source = builder.generateSource(
             _SOURCE,
             os.path.join(
