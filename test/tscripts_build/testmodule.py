@@ -4,7 +4,8 @@ from taf import *
 
 def _build(
     _context,
-    _target,
+    _targetDir,
+    _targetName,
     _source,
     _lib,
     _use,
@@ -13,7 +14,8 @@ def _build(
         features = [
             'dummyfeature',
         ],
-        target = _target,
+        targetDir = _targetDir,
+        targetName = _targetName,
         source = _source,
         lib = _lib,
         use = _use,

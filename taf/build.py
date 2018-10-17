@@ -16,10 +16,8 @@ def build(
 
         module.BUILDER(
             _context,
-            os.path.join(
-                moduleType(),
-                module.TARGET,
-            ),
+            moduleType(),
+            module.TARGET,
             module.SOURCE,
             module.LIB,
             module.USE,
