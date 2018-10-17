@@ -39,11 +39,12 @@ class TestBuild( unittest.TestCase ):
             builds0.features,
         )
         _self.assertEqual(
-            os.path.join(
-                'test_build',
-                'module1',
-            ),
-            builds0.target,
+            'test_build',
+            builds0.targetDir,
+        )
+        _self.assertEqual(
+            'module1',
+            builds0.targetName,
         )
         _self.assertEqual(
             {
@@ -78,11 +79,12 @@ class TestBuild( unittest.TestCase ):
             builds1.features,
         )
         _self.assertEqual(
-            os.path.join(
-                'test_build',
-                'module2',
-            ),
-            builds1.target,
+            'test_build',
+            builds1.targetDir,
+        )
+        _self.assertEqual(
+            'module2',
+            builds1.targetName,
         )
         _self.assertEqual(
             {
@@ -127,11 +129,12 @@ class TestBuild( unittest.TestCase ):
             builds2.features,
         )
         _self.assertEqual(
-            os.path.join(
-                'test_build',
-                'module3',
-            ),
-            builds2.target,
+            'test_build',
+            builds2.targetDir,
+        )
+        _self.assertEqual(
+            'module3',
+            builds2.targetName,
         )
         _self.assertEqual(
             {
@@ -165,8 +168,6 @@ class TestBuild( unittest.TestCase ):
             'testmodule',
         ]
 
-        #TODO
-
         build( context )
 
         _self.assertEqual(
@@ -182,11 +183,12 @@ class TestBuild( unittest.TestCase ):
             builds0.features,
         )
         _self.assertEqual(
-            os.path.join(
-                'test',
-                'testmodule',
-            ),
-            builds0.target,
+            'test',
+            builds0.targetDir,
+        )
+        _self.assertEqual(
+            'testmodule',
+            builds0.targetName,
         )
         _self.assertEqual(
             {
@@ -253,13 +255,15 @@ class _DummyBuild:
     def __init__(
         _self,
         _features,
-        _target,
+        _targetDir,
+        _targetName,
         _source,
         _lib,
         _use,
     ):
         _self.features = _features
-        _self.target = _target
+        _self.targetDir = _targetDir
+        _self.targetName = _targetName
         _self.source = _source
         _self.lib = _lib
         _self.use = _use
@@ -296,7 +300,8 @@ class _DummyContext:
     def __call__(
         _self,
         features,
-        target,
+        targetDir,
+        targetName,
         source,
         lib,
         use,
@@ -304,7 +309,8 @@ class _DummyContext:
         _self.builds.append(
             _DummyBuild(
                 features,
-                target,
+                targetDir,
+                targetName,
                 source,
                 lib,
                 use,

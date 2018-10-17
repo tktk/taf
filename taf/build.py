@@ -12,12 +12,12 @@ def build(
         module.importModule( moduleName )
 
         MODULE_TYPE = module.TYPE
-        type = MODULE_TYPE if MODULE_TYPE is not None else module.default
+        moduleType = MODULE_TYPE if MODULE_TYPE is not None else module.default
 
         module.BUILDER(
             _context,
             os.path.join(
-                type(),
+                moduleType(),
                 module.TARGET,
             ),
             module.SOURCE,
