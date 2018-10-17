@@ -3,6 +3,8 @@
 from . import taf
 from . import module
 
+import os.path
+
 def build(
     _context,
 ):
@@ -11,7 +13,10 @@ def build(
 
         module.BUILDER(
             _context,
-            module.TARGET,
+            os.path.join(
+                taf.PACKAGE_NAME,
+                module.TARGET,
+            ),
             module.SOURCE,
             module.LIB,
             module.USE,
