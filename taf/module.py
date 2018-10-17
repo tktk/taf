@@ -5,6 +5,7 @@ from . import taf
 import importlib
 
 DEPENDS = None
+TYPE = None
 BUILDER = None
 TARGET = None
 SOURCE = None
@@ -14,6 +15,7 @@ USE = None
 def initialize(
 ):
     global DEPENDS
+    global TYPE
     global BUILDER
     global TARGET
     global SOURCE
@@ -21,6 +23,7 @@ def initialize(
     global USE
 
     DEPENDS = None
+    TYPE = None
     BUILDER = None
     TARGET = None
     SOURCE = None
@@ -33,3 +36,11 @@ def importModule(
     initialize()
 
     importlib.reload( importlib.import_module( taf.TSCRIPTS_DIR + '.' + _moduleName ) )
+
+def test(
+):
+    return 'test'
+
+def default(
+):
+    return taf.PACKAGE_NAME

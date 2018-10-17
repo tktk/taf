@@ -11,10 +11,13 @@ def build(
     for moduleName in _context.env.taf[ 'BUILD_MODULES' ]:
         module.importModule( moduleName )
 
+        MODULE_TYPE = module.TYPE
+        type = MODULE_TYPE if MODULE_TYPE is not None else module.default
+
         module.BUILDER(
             _context,
             os.path.join(
-                taf.PACKAGE_NAME,
+                type(),
                 module.TARGET,
             ),
             module.SOURCE,
