@@ -10,7 +10,13 @@ def configure(
     _context.env.taf = {}
 
     _context.env.taf[ 'BUILD' ] = _getBuild( _context )
-    _context.env.taf[ 'BUILD_MODULES' ] = _generateBuildModules( _context )
+
+    WITHOUT_TEST = _getWithouttest( _context )
+
+    _context.env.taf[ 'BUILD_MODULES' ] = _generateBuildModules(
+        _context,
+        WITHOUT_TEST,
+    )
 
     common.loadTools( _context )
 
@@ -29,8 +35,24 @@ def _getBuild(
 
     return build
 
+def _getWithouttest(
+    _context,
+):
+    withouttest = _context.options.withouttest
+
+    if withouttest is None:
+        withouttest = False
+
+    _context.msg(
+        'withouttest',
+        withouttest,
+    )
+
+    return withouttest
+
 def _generateBuildModules(
     _context,
+    _WITHOUT_TEST,
 ):
     buildModules = []
 
@@ -47,6 +69,7 @@ def _generateBuildModules(
         _addBuildModules(
             buildModules,
             MODULE,
+            _WITHOUT_TEST,
         )
 
     _context.msg(
@@ -59,13 +82,17 @@ def _generateBuildModules(
 def _addBuildModules(
     _buildModules,
     _MODULE,
+    _WITHOUT_TEST,
 ):
     if _MODULE in _buildModules:
         return
 
-    _buildModules.append( _MODULE )
-
     module.importModule( _MODULE )
+
+    if _WITHOUT_TEST == True and module.TYPE == module.test:
+        return
+
+    _buildModules.append( _MODULE )
 
     DEPENDS = module.DEPENDS
 
@@ -74,4 +101,5 @@ def _addBuildModules(
             _addBuildModules(
                 _buildModules,
                 DEPEND_MODULE,
+                _WITHOUT_TEST,
             )

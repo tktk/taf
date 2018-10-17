@@ -12,6 +12,7 @@ class TestConfigure( unittest.TestCase ):
         context = _DummyContext()
 
         context.options.build = None
+        context.options.withouttest = False
 
         configure( context )
 
@@ -28,6 +29,7 @@ class TestConfigure( unittest.TestCase ):
         taf.BUILD = 'release'
 
         context.options.build = None
+        context.options.withouttest = False
 
         configure( context )
 
@@ -42,6 +44,7 @@ class TestConfigure( unittest.TestCase ):
         context = _DummyContext()
 
         context.options.build = 'release'
+        context.options.withouttest = False
 
         configure( context )
 
@@ -60,6 +63,7 @@ class TestConfigure( unittest.TestCase ):
         ]
 
         context.options.build = 'debug'
+        context.options.withouttest = False
 
         configure( context )
 
@@ -74,6 +78,7 @@ class TestConfigure( unittest.TestCase ):
         context = _DummyContext()
 
         context.options.build = 'debug'
+        context.options.withouttest = False
         context.options[ 'enable.module' ] = True
         context.options[ 'enable.module_disable' ] = False
         context.options.otheroption1 = True
@@ -94,6 +99,7 @@ class TestConfigure( unittest.TestCase ):
         context = _DummyContext()
 
         context.options.build = 'debug'
+        context.options.withouttest = False
         context.options[ 'enable.module1' ] = True
         context.options[ 'enable.module_disable' ] = False
         context.options.otheroption1 = True
