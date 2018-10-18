@@ -39,7 +39,7 @@ def importModule(
 
 def test(
 ):
-    return 'test'
+    return taf.TEST_DIR
 
 def default(
 ):
