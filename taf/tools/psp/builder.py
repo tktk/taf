@@ -2,18 +2,23 @@
 
 from . import *
 from .. import builder
+from ... import module
 from ... import taf
 
 import os.path
 
 def eboot(
     _context,
-    _TARGET,
+    _TARGET_DIR,
+    _TARGET_NAME,
     _SOURCE,
     _LIB,
     _USE,
 ):
-    TARGET_ELF = _TARGET + '.elf'
+    TARGET_ELF = builder.generateTarget(
+        module.tmp(),
+        _TARGET_NAME + '.elf',
+    )
     _buildElf(
         _context,
         TARGET_ELF,
@@ -41,7 +46,11 @@ def eboot(
         TARGET_ELF_FIXUP,
     )
 
-    TARGET_SFO = 'PARAM.SFO'
+    TARGET_SFO = os.path.join(
+        module.tmp(),
+        _TARGET_NAME,
+        'PARAM.SFO',
+    )
     _makeSfo(
         _context,
         TARGET_SFO,
@@ -49,7 +58,11 @@ def eboot(
 
     _context.add_group()
 
-    TARGET_EBOOT = 'EBOOT.PBP'
+    TARGET_EBOOT = os.path.join(
+        _TARGET_DIR,
+        _TARGET_NAME,
+        'EBOOT.PBP',
+    )
     _packPbp(
         _context,
         TARGET_EBOOT,
@@ -59,12 +72,16 @@ def eboot(
 
 def prx(
     _context,
-    _TARGET,
+    _TARGET_DIR,
+    _TARGET_NAME,
     _SOURCE,
     _LIB,
     _USE,
 ):
-    TARGET_ELF = _TARGET + '.elf'
+    TARGET_ELF = builder.generateTarget(
+        module.tmp(),
+        _TARGET_NAME + '.elf',
+    )
     _buildElf(
         _context,
         TARGET_ELF,
@@ -85,7 +102,10 @@ def prx(
 
     _context.add_group()
 
-    TARGET_PRX = _TARGET + '.prx'
+    TARGET_PRX = builder.generateTarget(
+        _TARGET_DIR,
+        _TARGET_NAME + '.prx',
+    )
     _genPrx(
         _context,
         TARGET_PRX,
@@ -135,14 +155,14 @@ def _stripElf(
     _context(
         rule = _stripElfRule,
         target = _TARGET,
-        use = _TARGET_ELF_FIXUP,
+        source = _TARGET_ELF_FIXUP,
     )
 
 def _stripElfRule(
     _task,
 ):
-    ELF_FIXUP = _task.generator.use
-    TARGET = _task.outputs[ 0 ]
+    ELF_FIXUP = _task.inputs[ 0 ].abspath()
+    TARGET = _task.outputs[ 0 ].abspath()
 
     _task.exec_command(
         '%s/bin/psp-strip %s -o %s'
@@ -165,7 +185,7 @@ def _makeSfo(
 def _makeSfoRule(
     _task,
 ):
-    TARGET = _task.outputs[ 0 ]
+    TARGET = _task.outputs[ 0 ].abspath()
 
     _task.exec_command(
         '%s/bin/mksfo %s %s'
@@ -185,7 +205,7 @@ def _packPbp(
     _context(
         rule = _packPbpRule,
         target = _TARGET,
-        use = [
+        source = [
             _TARGET_ELF_STRIP,
             _TARGET_SFO,
         ],
@@ -194,9 +214,9 @@ def _packPbp(
 def _packPbpRule(
     _task,
 ):
-    TARGET = _task.outputs[ 0 ]
-    ELF_STRIP = _task.generator.use[ 0 ]
-    SFO = _task.generator.use[ 1 ]
+    TARGET = _task.outputs[ 0 ].abspath()
+    ELF_STRIP = _task.inputs[ 0 ].abspath()
+    SFO = _task.inputs[ 1 ].abspath()
 
     _task.exec_command(
         '%s/bin/pack-pbp %s %s NULL NULL NULL NULL NULL %s NULL'
@@ -216,14 +236,14 @@ def _fixupImports(
     _context(
         rule = _fixupImportsRule,
         target = _TARGET,
-        use = _TARGET_ELF,
+        source = _TARGET_ELF,
     )
 
 def _fixupImportsRule(
     _task,
 ):
-    ELF = _task.generator.use
-    TARGET = _task.outputs[ 0 ]
+    ELF = _task.inputs[ 0 ].abspath()
+    TARGET = _task.outputs[ 0 ].abspath()
 
     _task.exec_command(
         '%s/bin/psp-fixup-imports %s -o %s'
@@ -242,14 +262,14 @@ def _genPrx(
     _context(
         rule = _genPrxRule,
         target = _TARGET,
-        use = _TARGET_ELF_FIXUP,
+        source = _TARGET_ELF_FIXUP,
     )
 
 def _genPrxRule(
     _task,
 ):
-    ELF_FIXUP = _task.generator.use
-    TARGET = _task.outputs[ 0 ]
+    ELF_FIXUP = _task.inputs[ 0 ].abspath()
+    TARGET = _task.outputs[ 0 ].abspath()
 
     _task.exec_command(
         '%s/bin/psp-prxgen %s %s'

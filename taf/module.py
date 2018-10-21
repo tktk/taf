@@ -37,10 +37,14 @@ def importModule(
 
     importlib.reload( importlib.import_module( taf.TSCRIPTS_DIR + '.' + _moduleName ) )
 
+def default(
+):
+    return taf.PACKAGE_NAME
+
 def test(
 ):
     return taf.TEST_DIR
 
-def default(
+def tmp(
 ):
-    return taf.PACKAGE_NAME
+    return taf.TMP_DIR

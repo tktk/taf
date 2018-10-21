@@ -10,3 +10,5 @@ BUILD = 'debug'
 TSCRIPTS_DIR = 'tscripts'
 
 TEST_DIR = 'test'
+
+TMP_DIR = 'tmp'
