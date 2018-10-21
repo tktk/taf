@@ -55,6 +55,7 @@ def eboot(
     _makeSfo(
         _context,
         TARGET_SFO,
+        _USER_DATA,
     )
 
     _context.add_group()
@@ -178,22 +179,27 @@ def _stripElfRule(
 def _makeSfo(
     _context,
     _TARGET,
+    _USER_DATA,
 ):
     _context(
         rule = _makeSfoRule,
         target = _TARGET,
+        userData = _USER_DATA,
     )
 
 def _makeSfoRule(
     _task,
 ):
     TARGET = _task.outputs[ 0 ].abspath()
+    USER_DATA = _task.generator.userData
+
+    TITLE = USER_DATA[ 'TITLE' ]
 
     _task.exec_command(
         '%s/bin/mksfo %s %s'
         % (
             _task.env.PSPDEV,
-            'TEST', #TODO アプリ名
+            TITLE,
             TARGET,
         )
     )
@@ -220,6 +226,7 @@ def _packPbpRule(
     ELF_STRIP = _task.inputs[ 0 ].abspath()
     SFO = _task.inputs[ 1 ].abspath()
 
+    #TODO ユーザー定義データで設定できるようにする
     _task.exec_command(
         '%s/bin/pack-pbp %s %s NULL NULL NULL NULL NULL %s NULL'
         % (
