@@ -207,6 +207,62 @@ class TestBuild( unittest.TestCase ):
             builds0.use,
         )
 
+    def test_buildWithUserData(
+        _self,
+    ):
+        context = _DummyContext()
+
+        taf.TSCRIPTS_DIR = 'test.tscripts_build'
+
+        taf.PACKAGE_NAME = 'test_buildwithuserdata'
+
+        context.env.taf = {}
+        context.env.taf[ 'BUILD_MODULES' ] = [
+            'modulewithuserdata',
+        ]
+
+        build( context )
+
+        _self.assertEqual(
+            1,
+            len( context.builds ),
+        )
+
+        builds0 = context.builds[ 0 ]
+        _self.assertEqual(
+            'dummyfeature',
+            builds0.features,
+        )
+        _self.assertEqual(
+            'test_buildwithuserdata',
+            builds0.targetDir,
+        )
+        _self.assertEqual(
+            'modulewithuserdata',
+            builds0.targetName,
+        )
+        _self.assertEqual(
+            'src.cpp',
+            builds0.source,
+        )
+        _self.assertEqual(
+            'lib',
+            builds0.lib,
+        )
+        _self.assertEqual(
+            'use',
+            builds0.use,
+        )
+        _self.assertEqual(
+            {
+                'USER_DATA' : [
+                    'data1',
+                    'data2',
+                ]
+            },
+            builds0.userData,
+        )
+
     def test_addPostFunctions(
         _self,
     ):
@@ -260,6 +316,7 @@ class _DummyBuild:
         _source,
         _lib,
         _use,
+        _userData,
     ):
         _self.features = _features
         _self.targetDir = _targetDir
@@ -267,6 +324,7 @@ class _DummyBuild:
         _self.source = _source
         _self.lib = _lib
         _self.use = _use
+        _self.userData = _userData
 
 class _DummyContext:
     def __init__(
@@ -305,6 +363,7 @@ class _DummyContext:
         source,
         lib,
         use,
+        userData = None,
     ):
         _self.builds.append(
             _DummyBuild(
@@ -314,5 +373,6 @@ class _DummyContext:
                 source,
                 lib,
                 use,
+                userData,
             )
         )
