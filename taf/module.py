@@ -11,6 +11,7 @@ TARGET = None
 SOURCE = None
 LIB = None
 USE = None
+USER_DATA = None
 
 def initialize(
 ):
@@ -21,6 +22,7 @@ def initialize(
     global SOURCE
     global LIB
     global USE
+    global USER_DATA
 
     DEPENDS = None
     TYPE = None
@@ -29,6 +31,7 @@ def initialize(
     SOURCE = None
     LIB = None
     USE = None
+    USER_DATA = None
 
 def importModule(
     _moduleName,

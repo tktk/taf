@@ -12,34 +12,28 @@ def _build(
     _userData,
 ):
     _context(
-        features = [
-            'dummyfeature1',
-            'dummyfeature2',
-        ],
+        features = 'dummyfeature',
         targetDir = _targetDir,
         targetName = _targetName,
         source = _source,
         lib = _lib,
         use = _use,
+        userData = _userData,
     )
 
 module.BUILDER = _build
 
-module.TARGET = 'module1'
+module.TARGET = 'modulewithuserdata'
 
-module.SOURCE = {
-    'module1' : [
-        'src1.cpp',
-        'src2.cpp',
+module.SOURCE = 'src.cpp'
+
+module.LIB = 'lib'
+
+module.USE = 'use'
+
+module.USER_DATA = {
+    'USER_DATA' : [
+        'data1',
+        'data2',
     ],
 }
-
-module.LIB = [
-    'module1lib1',
-    'module1lib2',
-]
-
-module.USE = [
-    'module1use1',
-    'module1use2',
-]

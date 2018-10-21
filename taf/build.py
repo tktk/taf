@@ -21,6 +21,7 @@ def build(
             module.SOURCE,
             module.LIB,
             module.USE,
+            module.USER_DATA,
         )
 
     POST_FUNCTIONS = taf.POST_FUNCTIONS
