@@ -13,6 +13,7 @@ def program(
     _SOURCE,
     _LIB,
     _USE,
+    _USER_DATA,
 ):
     _build(
         [
@@ -34,6 +35,7 @@ def shlib(
     _SOURCE,
     _LIB,
     _USE,
+    _USER_DATA,
 ):
     _build(
         [
@@ -55,6 +57,7 @@ def gtest(
     _SOURCE,
     _LIB,
     _USE,
+    _USER_DATA,
 ):
     _build(
         [

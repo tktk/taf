@@ -14,6 +14,7 @@ def files(
     _SOURCE,
     _LIB,
     _USE,
+    _USER_DATA,
 ):
     _context(
         rule = _copyFiles,

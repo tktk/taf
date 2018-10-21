@@ -14,6 +14,7 @@ def eboot(
     _SOURCE,
     _LIB,
     _USE,
+    _USER_DATA,
 ):
     TARGET_ELF = builder.generateTarget(
         module.tmp(),
@@ -77,6 +78,7 @@ def prx(
     _SOURCE,
     _LIB,
     _USE,
+    _USER_DATA,
 ):
     TARGET_ELF = builder.generateTarget(
         module.tmp(),
