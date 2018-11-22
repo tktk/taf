@@ -12,7 +12,7 @@ CXXFLAGS_GCC_COMMON_DEFAULT = [
     '-Wall',
     '-fno-rtti',
     '-fvisibility=hidden',
-    '-std=c++14',
+    '-std=c++17',
 ]
 
 CXXFLAGS_GCC_DEBUG_DEFAULT = [
