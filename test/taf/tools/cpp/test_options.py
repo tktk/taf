@@ -69,6 +69,27 @@ class TestOptions( unittest.TestCase ):
             OPTION,
         )
 
+    def test_libpath(
+        _self,
+    ):
+        context = _DummyContext()
+
+        options( context )
+
+        OPTION = _findOption(
+            context,
+            'libpath',
+        )
+
+        _self.assertEqual(
+            _DummyOption(
+                '--libpath',
+                'append',
+                None,
+            ),
+            OPTION,
+        )
+
     def test_testincludes(
         _self,
     ):
