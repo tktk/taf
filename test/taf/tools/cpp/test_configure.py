@@ -172,6 +172,111 @@ class TestConfigure( unittest.TestCase ):
             context.env.INCLUDES,
         )
 
+    def test_libpath(
+        _self,
+    ):
+        context = _DummyContext()
+
+        context.env.taf = {
+            'BUILD' : 'debug',
+        }
+
+        context.options.libpath = None
+
+        context.options.compilertype = None
+        context.options.linkertype = None
+        context.options.include = None
+        context.options.testinclude = None
+        context.options.testlibpath = None
+
+        configure( context )
+
+        _self.assertIs(
+            None,
+            context.env.LIBPATH,
+        )
+
+        _self.assertIs(
+            None,
+            context.env.RPATH,
+        )
+
+    def test_libpathUserTestlibpath(
+        _self,
+    ):
+        context = _DummyContext()
+
+        context.env.taf = {
+            'BUILD' : 'debug',
+        }
+
+        cpp.LIBPATH = [
+            'libpath1',
+            'libpath2',
+        ]
+
+        context.options.libpath = None
+
+        context.options.compilertype = None
+        context.options.linkertype = None
+        context.options.include = None
+        context.options.testinclude = None
+        context.options.testlibpath = None
+
+        configure( context )
+
+        _self.assertEqual(
+            [
+                os.path.abspath( 'libpath1' ),
+                os.path.abspath( 'libpath2' ),
+            ],
+            context.env.LIBPATH,
+        )
+        _self.assertEqual(
+            [
+                os.path.abspath( 'libpath1' ),
+                os.path.abspath( 'libpath2' ),
+            ],
+            context.env.RPATH,
+        )
+
+    def test_libpathFromOption(
+        _self,
+    ):
+        context = _DummyContext()
+
+        context.env.taf = {
+            'BUILD' : 'debug',
+        }
+
+        context.options.libpath = [
+            'libpath1',
+            'libpath2',
+        ]
+
+        context.options.compilertype = None
+        context.options.linkertype = None
+        context.options.include = None
+        context.options.testinclude = None
+        context.options.testlibpath = None
+
+        configure( context )
+
+        _self.assertEqual(
+            [
+                os.path.abspath( 'libpath1' ),
+                os.path.abspath( 'libpath2' ),
+            ],
+            context.env.LIBPATH,
+        )
+        _self.assertEqual(
+            [
+                os.path.abspath( 'libpath1' ),
+                os.path.abspath( 'libpath2' ),
+            ],
+            context.env.RPATH,
+        )
+
     def test_testincludes(
         _self,
     ):
