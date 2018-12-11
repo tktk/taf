@@ -12,6 +12,11 @@ def configure(
     _context.env.taf[ 'COMPILER_TYPE' ] = _getCompilerType( _context )
     _context.env.taf[ 'LINKER_TYPE' ] = _getLinkerType( _context )
     _context.env.INCLUDES = _generateIncludes( _context )
+
+    LIBPATH = _generateLibpath( _context )
+    _context.env.LIBPATH = LIBPATH
+    _context.env.RPATH = LIBPATH
+
     _context.env.CXXFLAGS = _generateCxxflags( _context )
     _context.env.DEFINES = _generateDefines( _context )
     _context.env.LINKFLAGS = _generateLinkflags( _context )
@@ -98,6 +103,24 @@ def _generateIncludes(
     )
 
     return includes
+
+def _generateLibpath(
+    _context,
+):
+    libpath = _context.options.libpath
+
+    if libpath is None:
+        libpath = getLibpath()
+
+    if libpath is not None:
+        libpath = _generateAbspathList( libpath )
+
+    _context.msg(
+        'libpath',
+        libpath,
+    )
+
+    return libpath
 
 def _generateCxxflags(
     _context,

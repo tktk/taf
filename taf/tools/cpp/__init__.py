@@ -4,6 +4,7 @@ SOURCE_DIR = 'src'
 HEADER_DIR = 'inc'
 
 INCLUDES = None
+LIBPATH = None
 
 TEST_INCLUDES = None
 TEST_LIBPATH = None
@@ -119,6 +120,10 @@ def getHeaderDir(
 def getIncludes(
 ):
     return INCLUDES
+
+def getLibpath(
+):
+    return LIBPATH
 
 def getTestincludes(
 ):

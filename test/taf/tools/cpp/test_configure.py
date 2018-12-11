@@ -20,6 +20,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.linkertype = None
         context.options.include = None
+        context.options.libpath = None
         context.options.testinclude = None
         context.options.testlibpath = None
 
@@ -43,6 +44,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.compilertype = None
         context.options.include = None
+        context.options.libpath = None
         context.options.testinclude = None
         context.options.testlibpath = None
 
@@ -66,6 +68,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.compilertype = None
         context.options.linkertype = None
+        context.options.libpath = None
         context.options.testinclude = None
         context.options.testlibpath = None
 
@@ -96,6 +99,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.compilertype = None
         context.options.linkertype = None
+        context.options.libpath = None
         context.options.testinclude = None
         context.options.testlibpath = None
 
@@ -126,6 +130,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.compilertype = None
         context.options.linkertype = None
+        context.options.libpath = None
         context.options.testinclude = None
         context.options.testlibpath = None
 
@@ -158,6 +163,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.compilertype = None
         context.options.linkertype = None
+        context.options.libpath = None
         context.options.testinclude = None
         context.options.testlibpath = None
 
@@ -291,6 +297,7 @@ class TestConfigure( unittest.TestCase ):
         context.options.compilertype = None
         context.options.linkertype = None
         context.options.include = None
+        context.options.libpath = None
         context.options.testlibpath = None
 
         configure( context )
@@ -319,6 +326,7 @@ class TestConfigure( unittest.TestCase ):
         context.options.compilertype = None
         context.options.linkertype = None
         context.options.include = None
+        context.options.libpath = None
         context.options.testlibpath = None
 
         configure( context )
@@ -348,6 +356,7 @@ class TestConfigure( unittest.TestCase ):
         context.options.compilertype = None
         context.options.linkertype = None
         context.options.include = None
+        context.options.libpath = None
         context.options.testlibpath = None
 
         configure( context )
@@ -374,6 +383,7 @@ class TestConfigure( unittest.TestCase ):
         context.options.compilertype = None
         context.options.linkertype = None
         context.options.include = None
+        context.options.libpath = None
         context.options.testinclude = None
 
         configure( context )
@@ -407,6 +417,7 @@ class TestConfigure( unittest.TestCase ):
         context.options.compilertype = None
         context.options.linkertype = None
         context.options.include = None
+        context.options.libpath = None
         context.options.testinclude = None
 
         configure( context )
@@ -443,6 +454,7 @@ class TestConfigure( unittest.TestCase ):
         context.options.compilertype = None
         context.options.linkertype = None
         context.options.include = None
+        context.options.libpath = None
         context.options.testinclude = None
 
         configure( context )
@@ -475,6 +487,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.linkertype = None
         context.options.include = None
+        context.options.libpath = None
         context.options.testinclude = None
         context.options.testlibpath = None
 
@@ -505,6 +518,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.linkertype = None
         context.options.include = None
+        context.options.libpath = None
         context.options.testinclude = None
         context.options.testlibpath = None
 
@@ -534,6 +548,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.linkertype = None
         context.options.include = None
+        context.options.libpath = None
         context.options.testinclude = None
         context.options.testlibpath = None
 
@@ -564,6 +579,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.linkertype = None
         context.options.include = None
+        context.options.libpath = None
         context.options.testinclude = None
         context.options.testlibpath = None
 
@@ -596,6 +612,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.linkertype = None
         context.options.include = None
+        context.options.libpath = None
         context.options.testinclude = None
         context.options.testlibpath = None
 
@@ -622,6 +639,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.linkertype = None
         context.options.include = None
+        context.options.libpath = None
         context.options.testinclude = None
         context.options.testlibpath = None
 
@@ -647,6 +665,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.linkertype = None
         context.options.include = None
+        context.options.libpath = None
         context.options.testinclude = None
         context.options.testlibpath = None
 
@@ -673,6 +692,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.linkertype = None
         context.options.include = None
+        context.options.libpath = None
         context.options.testinclude = None
         context.options.testlibpath = None
 
@@ -698,6 +718,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.compilertype = None
         context.options.include = None
+        context.options.libpath = None
         context.options.testinclude = None
         context.options.testlibpath = None
 
@@ -723,6 +744,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.compilertype = None
         context.options.include = None
+        context.options.libpath = None
         context.options.testinclude = None
         context.options.testlibpath = None
 
@@ -748,6 +770,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.compilertype = None
         context.options.include = None
+        context.options.libpath = None
         context.options.testinclude = None
         context.options.testlibpath = None
 
@@ -775,6 +798,7 @@ class TestConfigure( unittest.TestCase ):
 
         context.options.compilertype = None
         context.options.include = None
+        context.options.libpath = None
         context.options.testinclude = None
         context.options.testlibpath = None
 
