@@ -202,11 +202,6 @@ class TestConfigure( unittest.TestCase ):
             context.env.LIBPATH,
         )
 
-        _self.assertIs(
-            None,
-            context.env.RPATH,
-        )
-
     def test_libpathUserTestlibpath(
         _self,
     ):
@@ -238,13 +233,6 @@ class TestConfigure( unittest.TestCase ):
             ],
             context.env.LIBPATH,
         )
-        _self.assertEqual(
-            [
-                os.path.abspath( 'libpath1' ),
-                os.path.abspath( 'libpath2' ),
-            ],
-            context.env.RPATH,
-        )
 
     def test_libpathFromOption(
         _self,
@@ -274,13 +262,6 @@ class TestConfigure( unittest.TestCase ):
                 os.path.abspath( 'libpath2' ),
             ],
             context.env.LIBPATH,
-        )
-        _self.assertEqual(
-            [
-                os.path.abspath( 'libpath1' ),
-                os.path.abspath( 'libpath2' ),
-            ],
-            context.env.RPATH,
         )
 
     def test_testincludes(
@@ -393,11 +374,6 @@ class TestConfigure( unittest.TestCase ):
             context.env.LIBPATH_TEST,
         )
 
-        _self.assertIs(
-            None,
-            context.env.RPATH_TEST,
-        )
-
     def test_testlibpathUserTestlibpath(
         _self,
     ):
@@ -429,13 +405,6 @@ class TestConfigure( unittest.TestCase ):
             ],
             context.env.LIBPATH_TEST,
         )
-        _self.assertEqual(
-            [
-                os.path.abspath( 'libpath1' ),
-                os.path.abspath( 'libpath2' ),
-            ],
-            context.env.RPATH_TEST,
-        )
 
     def test_testlibpathFromOption(
         _self,
@@ -465,13 +434,6 @@ class TestConfigure( unittest.TestCase ):
                 os.path.abspath( 'libpath2' ),
             ],
             context.env.LIBPATH_TEST,
-        )
-        _self.assertEqual(
-            [
-                os.path.abspath( 'libpath1' ),
-                os.path.abspath( 'libpath2' ),
-            ],
-            context.env.RPATH_TEST,
         )
 
     def test_cxxflagsGccDebug(
