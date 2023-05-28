@@ -15,7 +15,6 @@ def configure(
 
     LIBPATH = _generateLibpath( _context )
     _context.env.LIBPATH = LIBPATH
-    _context.env.RPATH = LIBPATH
 
     _context.env.CXXFLAGS = _generateCxxflags( _context )
     _context.env.DEFINES = _generateDefines( _context )
@@ -25,7 +24,6 @@ def configure(
 
     TEST_LIBPATH = _generateTestlibpath( _context )
     _context.env.LIBPATH_TEST = TEST_LIBPATH
-    _context.env.RPATH_TEST = TEST_LIBPATH
 
 def _getCompilerType(
     _context,
